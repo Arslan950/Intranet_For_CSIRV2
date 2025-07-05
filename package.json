@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "start": "node backend/server.js",
+  "client": "npm start --prefix my-vue-app",
+  "server": "node backend/server.js"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Light200312/Intranet_For_CSIRV2.git"
