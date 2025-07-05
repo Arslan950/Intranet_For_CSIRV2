@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { toast } from "react-toastify";
 const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
   const navigate = useNavigate();
   const [logined, setlogined] = useState(false)

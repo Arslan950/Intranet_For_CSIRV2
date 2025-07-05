@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 
 const Noticeboard = ({ token, role, username ,Classes}) => {
   const [notices, setnotices] = useState([]);
@@ -81,7 +81,6 @@ const Noticeboard = ({ token, role, username ,Classes}) => {
   return (
     <div className={`p-4 md:p-8 text-white bg-[#34495e] rounded-xl min-h-fit ${Classes}`}>
       <h1 className="text-3xl font-bold mb-6 text-center">📌 Notice Board</h1>
-     <ToastContainer autoClose={3000} theme="dark" />
 
       <div className="grid gap-4 mb-10">
         {notices.map((data, index) => (

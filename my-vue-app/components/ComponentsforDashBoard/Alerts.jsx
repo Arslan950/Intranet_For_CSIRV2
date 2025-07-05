@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import { toast } from 'react-toastify';
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from 'react-toastify';
 
 
 const Alerts = ({ token, role, username, Classes }) => {

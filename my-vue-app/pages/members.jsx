@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { ToastContainer,toast } from "react-toastify";
+import { toast } from "react-toastify";
 const Members = (props) => {
   const [members, setMembers] = useState([]);
  console.log("Logged in as:", props.username, props.role);
@@ -41,7 +41,6 @@ const Members = (props) => {
   return (
     <div className={` bg-[#22313f] p-6 rounded-xl flex ${props.Classes} flex-col gap-y-3 text-white`}>
       <h2 className="text-3xl font-bold mb-4">Member List</h2>
-<ToastContainer/>
       {members.map((mem) => (
         <div
           key={mem._id}

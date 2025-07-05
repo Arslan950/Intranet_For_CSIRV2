@@ -7,7 +7,6 @@ import ProtectedRoute from "../components/ProtectedRoute";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import Sidebar from "../components/Sidebar";
 import Profile from "../pages/Profile";
 const App = () => {
   const [open, setopen] = useState(true)
@@ -29,7 +28,7 @@ const App = () => {
 
   return (
     <div className="relative">
-      {/* <ToastContainer/> */}
+      <ToastContainer/>
       <Navbar
       setopen={
         setopen

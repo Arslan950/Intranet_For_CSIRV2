@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import { toast } from "react-toastify";
 const Document = ({ token, role, username,Classes }) => {
   const [files, setFiles] = useState([]);
   const [file, setFile] = useState(null);
@@ -19,10 +19,10 @@ const Document = ({ token, role, username,Classes }) => {
       a.href = url;
       a.download = filename;
       a.click();
-      // toast("doc downloaded")
+      toast("doc downloaded")
       window.URL.revokeObjectURL(url);
     } catch (err) {
-      // toast("❌ Download failed");
+      toast("❌ Download failed");
       console.error(err);
     }
   };
@@ -38,7 +38,7 @@ const Document = ({ token, role, username,Classes }) => {
       const url = window.URL.createObjectURL(blob);
       window.open(url, "_blank");
     } catch (err) {
-      // toast("❌ Preview failed");
+      toast("❌ Preview failed");
       console.error(err);
     }
   };
@@ -84,7 +84,7 @@ const Document = ({ token, role, username,Classes }) => {
           "Content-Type": "multipart/form-data",
         },
       });
-      // toast("✅ Upload successful");
+      toast("✅ Upload successful");
       setFile(null);
       fetchFiles();
     } catch (err) {
@@ -97,7 +97,7 @@ const Document = ({ token, role, username,Classes }) => {
       await axios.delete(`http://localhost:3001/file/${filename}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      // toast("✅ Deleted");
+      toast("✅ Deleted");
       fetchFiles();
     } catch (err) {
       console.log("❌ Delete failed");
@@ -105,9 +105,7 @@ const Document = ({ token, role, username,Classes }) => {
   };
   return (
     <div className={`${Classes}`}>
-      {/* <h1 className="text-3xl font-bold mb-6 capitalize">{role} Panel</h1> */}
-      {/* <div className="w-full bg-gray-400 h-1 my-2"></div> */}
-
+    
       {/* Files List */}
       <div className="flex flex-col gap-y-2">
         <h2 className="text-2xl font-semibold mb-4">

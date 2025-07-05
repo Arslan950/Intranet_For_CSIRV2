@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Noticeboard from "./ComponentsforDashBoard/Noticeboard";
-{/* <ToastContainer autoClose={3000} position="top-right" theme="dark" /> */}
 import Members from "../pages/members";
 import Alerts from "./ComponentsforDashBoard/Alerts";
 import Document from "./ComponentsforDashBoard/Document";
 import SidebarLayout from "./Sidebar"
-import { ToastContainer, toast } from "react-toastify";
 
 const Dashboard = ({ token, role, username ,open ,setopen})  => {
   return (
