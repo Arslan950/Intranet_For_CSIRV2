@@ -8,16 +8,17 @@ import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import Profile from "../pages/Profile";
+import ProfileForm from "../pages/ProfileForm";
 const App = () => {
-  const [open, setopen] = useState(true)
+  const [open, setopen] = useState(true);
   const [role, setrole] = useState(() => {
     return localStorage.getItem("role") || "user";
   });
 
   const [AdminName, setAdminName] = useState(() => {
-    return localStorage.getItem("AdminName") || "AdminName";
+    return localStorage.getItem("AdminName") || "None";
   });
-  
+
   const navigate = useNavigate();
   const auth = useAuth();
   useEffect(() => {
@@ -28,26 +29,30 @@ const App = () => {
 
   return (
     <div className="relative">
-      <ToastContainer/>
+      <ToastContainer />
       <Navbar
-      setopen={
-        setopen
-      }
+        setopen={setopen}
         logout={auth.logout}
         role={role}
         username={AdminName}
         authenticated={auth.authenticated}
+        setAdminName={setAdminName}
+        setrole={setrole}
       />
-     {/* <Sidebar/> */}
-       
+      {/* <Sidebar/> */}
+
       <Routes>
         <Route
           path="/"
           element={
             <ProtectedRoute>
-              <Dashboard token={auth.token} role={role} username={AdminName}  setopen={setopen} open={
-        open
-      } />
+              <Dashboard
+                token={auth.token}
+                role={role}
+                username={AdminName}
+                setopen={setopen}
+                open={open}
+              />
             </ProtectedRoute>
           }
         />
@@ -61,10 +66,28 @@ const App = () => {
               authenticated={auth.authenticated}
             />
           }
-        /> <Route
+        />{" "}
+        <Route
           path="/profile"
           element={
             <Profile
+             token={auth.token}
+            AdminName={AdminName}
+              role={role}
+              setAdminName={setAdminName}
+              login={auth.login}
+              setrole={setrole}
+              authenticated={auth.authenticated}
+            />
+          }
+        />
+        <Route
+          path="/profileForm"
+          element={
+            <ProfileForm
+             token={auth.token}
+              AdminName={AdminName}
+              role={role}
               setAdminName={setAdminName}
               login={auth.login}
               setrole={setrole}
@@ -73,7 +96,6 @@ const App = () => {
           }
         />
       </Routes>
-      
     </div>
   );
 };

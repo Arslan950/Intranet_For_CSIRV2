@@ -9,9 +9,13 @@ export const useAuth = () => {
     setToken(newToken);
   };
 
+
   const logout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('AdminName');
+    localStorage.removeItem('role');
     setToken('');
+    setAuthenticated(false);
   };
   
 

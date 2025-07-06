@@ -4,9 +4,9 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import dotenv from "dotenv";
-
+import multer from "multer";
 dotenv.config(); // Load environment variables
-
+const profile = multer({ storage: multer.memoryStorage() });
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -44,7 +44,9 @@ router.post("/register", async (req, res) => {
 router.get("/members", async (req, res) => {
   try {
     const users = await User.find();
-    console.log(users.length ? `Users fetched: ${users.length}` : "No users found");
+    console.log(
+      users.length ? `Users fetched: ${users.length}` : "No users found"
+    );
     res.status(200).json(users); // ✅ Send as JSON, not string
   } catch (error) {
     console.error("Error fetching users:", error);
@@ -64,13 +66,11 @@ router.delete("/members/:id", async (req, res) => {
     await User.deleteOne({ _id });
     console.log("✅ User deleted successfully");
     res.status(200).send({ message: "User deleted successfully" });
-
   } catch (error) {
     console.error("❌ Error deleting user:", error);
     res.status(500).send({ message: "Something went wrong: " + error.message });
   }
 });
-
 
 // ✅ LOGIN Route
 router.post("/login", async (req, res) => {
@@ -98,12 +98,75 @@ router.post("/login", async (req, res) => {
   }
 
   const token = jwt.sign({ id: user._id, role: user.role }, JWT_SECRET, {
-    expiresIn: "1h",
+    expiresIn: "7d",
   });
 
   console.log("✅ Login successful:", username);
   res.send({ token, role: user.role, username });
   console.log(token);
 });
+
+//user put api,to upload neccessey aditional info
+router.put(
+  "/user/:username/profile",
+  profile.single("profileImage"),
+  async (req, res) => {
+    try {
+      const Profile = {
+        phone: req.body.phone,
+        email: req.body.email || "",
+        address: req.body.address || "",
+        position: req.body.position || "",
+      };
+      if (req.file) {
+        Profile.profileImage = {
+          data: req.file.buffer,
+          contentType: req.file.mimetype,
+        };
+      }
+      const user = await User.findOneAndUpdate({ username: req.params.username }, Profile, {
+        new: true,
+      });
+      if (!user) res.status(404).send({ message: "user not found" });
+      console.log("User Profile Updated with success");
+      res.json(user);
+    } catch (error) {
+      console.log("User Profile update gone wrong with  error: " + error);
+      res
+        .status(404)
+        .send({
+          message: "User Profile update gone wrong with  error: " + error,
+        });
+    }
+  }
+);
+
+//get user/username/profile
+router.get("/user/:username/profile", async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.params.username });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const profile = {
+      username: user.username,
+      email: user.email,
+      phone: user.phone,
+      address: user.address,
+      position: user.position,
+      _id:user._id,
+      profileImage: user.profileImage?.data
+        ? `data:${user.profileImage.contentType};base64,${user.profileImage.data.toString("base64")}`
+        : null,
+    };
+
+    res.json(profile);
+  } catch (error) {
+    res.status(500).json({ message: "Something went wrong: " + error });
+  }
+});
+
 
 export default router;

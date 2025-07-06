@@ -1,13 +1,22 @@
 import React,{useState} from "react";
-
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 const Navbar = (props) => {
+  const navigate = useNavigate()
   const [yes, setyes] = useState(true)
   const handleYes=()=>{
     setyes(!yes)
     props.setopen(yes)
 
   }
+  const handleLogout = () => {
+     // if stored manually
+    props.setAdminName("None");
+    props.setrole("user");
+    props.logout(); // your custom logout hook logic
+    navigate("/login")
+  };
+
   return (
     <div className="">
     <ul className="flex justify-between text-white font-medium bg-[#22313f] w-full h-12 text- p-2">
@@ -22,7 +31,7 @@ const Navbar = (props) => {
       </div>
       <button
         className="bg-red-600 rounded-2xl px-2 capitalize text-sm pb-[2px ] hover:bg-red-700"
-        onClick={props.logout}
+        onClick={handleLogout}
       >
         {props.role} {props.username}:{" "}
         {props.authenticated ? "Logout" : "login"}

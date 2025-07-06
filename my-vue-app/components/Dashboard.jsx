@@ -18,8 +18,8 @@ const Dashboard = ({ token, role, username ,open ,setopen})  => {
       <Noticeboard token={token} username={username} role={role} Classes={`sm:col-span-2 col-span-4`} />
       {/* <div className="w-full bg-gray-400 h-1 my-2"></div> */}
 
-      <Members token={token} role={role} username={username}  Classes={` col-span-4 md:col-span-1 md:row-span-2 `}/>
-      <Alerts token={token} role={role} username={username} Classes={`sm:col-span-2 md:col-span-3 lg:col-span-2 col-span-4  bg-[#34495e] px-6 py-5 rounded-lg` } />
+      <Members token={token} role={role} username={username}  Classes={` col-span-4 md:col-span-2  lg:col-span-1 sm:col-span-2 md:row-span-2 `}/>
+      <Alerts token={token} role={role} username={username} Classes={`sm:col-span-2 md:col-span-2 lg:col-span-2 col-span-4  bg-[#34495e] px-6 py-5 rounded-lg` } />
       {/* <div className="w-full bg-gray-400 h-1 my-2"></div> */}
 
     </div></div>

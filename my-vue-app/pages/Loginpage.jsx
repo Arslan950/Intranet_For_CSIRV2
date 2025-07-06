@@ -57,7 +57,8 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
         updateRole(res.data.role);
         setlogined( res.data.token.length>0)
         // alert("token lenght"+res.data.token.length)
-
+        
+        localStorage.setItem("AdminName",res.data.username)
         setAdminName?.(res.data.username);
         setMessage(`✅ Login Successful`)
         setBtnACtion("Proceed")
@@ -89,6 +90,7 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
               Email
             </label>
             <input
+             autoComplete="username"
               name="username"
               onChange={handleChange}
               value={form.username}
@@ -105,6 +107,7 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
               onChange={handleChange}
               value={form.password}
               type="password"
+               autoComplete="current-password"
               className="w-full text-xl pl-4 py-2 text-blue-700 font-medium bg-white focus:outline-none rounded-2xl"
             />
           </div>
