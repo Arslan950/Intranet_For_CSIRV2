@@ -68,11 +68,18 @@ const Alerts = ({ token, role, username, Classes }) => {
       toast("❌ Preview failed");
     }
   };
+const hideSections = location.pathname === "/";
 
   return (
-    <div className={`${Classes ?? ""}`}>
+    <div className={`${Classes ?? "m-4"}`}>
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold mb-2 text-white">📢 Announcements</h2>
+        <h2
+  className="text-xl text-red-500 font-extrabold mb-2"
+  style={{ textShadow: "1px 1px 2px white" }}
+>
+  📢 Announcements
+</h2>
+
 
         {allalerts.length === 0 && (
           <p className="text-gray-400">No alerts available.</p>
@@ -104,7 +111,7 @@ const Alerts = ({ token, role, username, Classes }) => {
           </div>
         ))}
 
-        {role === "admin" && (
+        {role === "admin" && !hideSections && (
           <div className="mt-6">
             <h2 className="text-xl">Upload New Announcement</h2>
             <div className="flex items-center justify-between mb-6">

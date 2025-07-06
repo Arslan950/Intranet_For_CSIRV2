@@ -103,12 +103,14 @@ const Document = ({ token, role, username,Classes }) => {
       console.log("❌ Delete failed");
     }
   };
+const hideSections = location.pathname === "/";
+
   return (
-    <div className={`${Classes}`}>
+    <div className={`${Classes? Classes: `bg-[#212b34] h-screen`}`}>
     
       {/* Files List */}
-      <div className="flex flex-col gap-y-2">
-        <h2 className="text-2xl font-semibold mb-4">
+      <div className="flex flex-col gap-y-2 p-4" >
+        <h2 className="text-2xl font-semibold mb-4 text-white">
           📄 Download Documentations{" "}
         </h2>
         <ul className="divide-y divide-gray-600">
@@ -145,7 +147,7 @@ const Document = ({ token, role, username,Classes }) => {
         </ul>
       </div>
       {/* File Upload for Admin */}
-      {role === "admin" && (
+      {role === "admin" && !hideSections && (
         <div className=" mt-3.5 flex flex-col items-center gap-4">
           <input
             type="file"

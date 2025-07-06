@@ -39,7 +39,7 @@ const Members = (props) => {
   };
 
   return (
-    <div className={` bg-[#22313f] p-6 rounded-xl flex ${props.Classes} flex-col gap-y-3 text-white`}>
+    <div className={` ${props.Classes ? props.Classes:`bg-[#22313f] p-6  flex  flex-col gap-y-3 text-white h-screen`} `}>
       <h2 className="text-3xl font-bold mb-4">Member List</h2>
       {members.map((mem) => (
         <div

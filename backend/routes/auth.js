@@ -112,11 +112,14 @@ router.put(
   profile.single("profileImage"),
   async (req, res) => {
     try {
+      const if_not_set = await User.findOne({ username: req.params.username })
       const Profile = {
-        phone: req.body.phone,
-        email: req.body.email || "",
-        address: req.body.address || "",
-        position: req.body.position || "",
+        phone: req.body.phone || if_not_set.phone,
+        email: req.body.email || if_not_set.email,
+        address: req.body.address || if_not_set.address,
+        position: req.body.position || if_not_set.position,
+        skills: req.body.skills || if_not_set.skills ,
+        about: req.body.about || if_not_set.about,
       };
       if (req.file) {
         Profile.profileImage = {
@@ -157,6 +160,9 @@ router.get("/user/:username/profile", async (req, res) => {
       address: user.address,
       position: user.position,
       _id:user._id,
+      role:user.role,
+      about:user.about,
+      skills:user.skills,
       profileImage: user.profileImage?.data
         ? `data:${user.profileImage.contentType};base64,${user.profileImage.data.toString("base64")}`
         : null,

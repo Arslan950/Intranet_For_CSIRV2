@@ -11,6 +11,8 @@ const userSchema = new mongoose.Schema({
   email: { type: String, unique: true , sparse: true },
   address: { type: String },
   position: { type: String },
+  skills: { type: [String], default:[] },
+  about:{type:String},
   profileImage: { data: Buffer, contentType: String },
 });
 

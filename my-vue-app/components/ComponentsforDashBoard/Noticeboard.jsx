@@ -3,6 +3,8 @@ import axios from "axios";
 import {  toast } from "react-toastify";
 
 const Noticeboard = ({ token, role, username ,Classes}) => {
+const hideSections = location.pathname === "/";
+
   const [notices, setnotices] = useState([]);
   const [ntext, setntext] = useState({
     notice: "",
@@ -79,7 +81,7 @@ const Noticeboard = ({ token, role, username ,Classes}) => {
   }
 
   return (
-    <div className={`p-4 md:p-8 text-white bg-[#34495e] rounded-xl min-h-fit ${Classes}`}>
+    <div className={`  ${Classes ? Classes: `p-4 md:p-8 text-white bg-[#34495e] h-screen`}`}>
       <h1 className="text-3xl font-bold mb-6 text-center">📌 Notice Board</h1>
 
       <div className="grid gap-4 mb-10">
@@ -117,7 +119,8 @@ const Noticeboard = ({ token, role, username ,Classes}) => {
         ))}
       </div>
 
-      {role === "admin" && (
+
+      {role === "admin" && !hideSections && (
         <div className="bg-[#101826] p-6 rounded-lg shadow-lg max-w-xl mx-auto">
           <h2 className="text-2xl font-bold mb-4">Post New Notice</h2>
           <input
