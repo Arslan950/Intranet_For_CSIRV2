@@ -146,7 +146,7 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
         </form>
       </div>
 
-      <div className={`w-full ${logined? "flex": "hidden"}  h-full transition ease-in-out duration-100 items-center justify-center  backdrop-blur-sm absolute`}>
+      <div className={`w-full ${logined? "flex": "hidden"}  h-screen  transition ease-in-out duration-100 items-center justify-center  backdrop-blur-sm absolute`}>
         <div className="w-[300px] transition ease-out duration-500  flex flex-col p-3.5 gap-y-8 items-center justify-center  text-black bg-white rounded-md shadow-white shadow-2xl ">
           <h1 className="text-2xl text-center font-bold"> {message}</h1>
           <button onClick={()=>{

@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-const Document = ({ token, role, username,Classes }) => {
+const Document = ({ token, role, username, Classes }) => {
+  const [filter, setFilter] = useState("");
   const [files, setFiles] = useState([]);
   const [file, setFile] = useState(null);
+  const [filteredFiles, setFilteredFiles] = useState(null);
+
 
   const handleDownload = async (filename) => {
     try {
@@ -19,7 +22,7 @@ const Document = ({ token, role, username,Classes }) => {
       a.href = url;
       a.download = filename;
       a.click();
-      toast("doc downloaded")
+      toast("doc downloaded");
       window.URL.revokeObjectURL(url);
     } catch (err) {
       toast("❌ Download failed");
@@ -54,6 +57,19 @@ const Document = ({ token, role, username,Classes }) => {
       console.error("Failed to fetch files:", err);
     }
   };
+  const handlefilter = () => {
+  if (filter.trim()) {
+    const filtered = files.filter(file =>
+      file.filename.toLowerCase().includes(filter.toLowerCase())
+    );
+    setFilteredFiles(filtered);
+    toast("🔍 Filter applied");
+  } else {
+    toast("❗ Filter is empty!");
+    setFilteredFiles([]); // show all
+  }
+};
+
 
   // useEffect(() => {
   //   fetchFiles();
@@ -103,18 +119,31 @@ const Document = ({ token, role, username,Classes }) => {
       console.log("❌ Delete failed");
     }
   };
-const hideSections = location.pathname === "/";
+  const hideSections = location.pathname === "/";
 
   return (
-    <div className={`${Classes? Classes: `bg-[#212b34] h-screen`}`}>
-    
+    <div className={`${Classes ? Classes : `bg-[#212b34] h-screen`}`}>
+      <div className=" h-12 flex items-center  justify-center px-2 gap-4 ">
+        {" "}
+        <input
+           
+           onChange={(e)=>setFilter(e.target.value)}
+          type="text w-full"
+          className="border-2 rounded-md bg-white pl-2 text-[#212b34] border-white h-8 w-[80%] "
+          placeholder=" Enter key words for Doc"
+        />{" "}
+        <button onClick={handlefilter} className="bg-blue-600 px-2 py-1 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border focus:border-white text-white">
+          Search
+        </button>
+      </div>
+
       {/* Files List */}
-      <div className="flex flex-col gap-y-2 p-4" >
+      <div className="flex flex-col gap-y-2 p-4">
         <h2 className="text-2xl font-semibold mb-4 text-white">
           📄 Download Documentations{" "}
         </h2>
         <ul className="divide-y divide-gray-600">
-          {files.map((f, i) => (
+          {(filteredFiles? filteredFiles:files).map((f, i) => (
             <li
               key={f._id}
               className="flex justify-between items-center py-3 hover:bg-gray-800 px-2 rounded flex-wrap"
