@@ -69,7 +69,7 @@ const Profile = (props) => {
             <span>Current role </span>{" "}
             <img
               className=" h-5 mb-1 filter grayscale-25"
-              src="../src/assets/bagicon.png"
+              src="../public/bagicon.png"
               alt=""
             />{" "}
           </span>
@@ -91,7 +91,7 @@ const Profile = (props) => {
         <div className="skills capitalize max-w-1/2 space-y-3">
           <span className="flex font-bold text-[#737373] text-xl md:text-2xl xl:text-4xl  lg:text-3xl items-center justify-end gap-1">
             Skils{" "}
-            <img className="h-6 mt-1 " src="../src/assets/gstar.png" alt="" />
+            <img className="h-6 mt-1 " src="../public/gstar.png" alt="" />
           </span>
           <span className="text-sm md:text-md  lg:text-xl xl:text-2xl flex flex-wrap gap-1 ">
             {" "}

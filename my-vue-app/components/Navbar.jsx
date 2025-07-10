@@ -24,7 +24,7 @@ const Navbar = (props) => {
         <div className="flex items-center gap-1.5  j w-1/2">
           <img
             onClick={handleYes}
-            src="../src/assets/menu.png"
+            src="/menu.png"
             alt="menu"
             className="invert h-7 cursor-pointer transform rounded-full p-1 transition ease-out duration-200 hover:bg-[#88888846] hover:scale-105 "
           />{" "}
@@ -40,7 +40,7 @@ const Navbar = (props) => {
           <Link to={"https://github.com/Light200312/Intranet_For_CSIRV2.git"} className=" m-4">
            <img 
   className="h-12   hover:invert-0 hover:bg-white cursor-pointer rounded-full invert transition"
-  src="../src/assets/GHIcon.png"
+  src="/GHIcon.png"
   alt="GitHub Icon"
 />
 
