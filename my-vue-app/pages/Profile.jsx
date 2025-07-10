@@ -39,7 +39,7 @@ const Profile = (props) => {
         {/* Profile Picture */}
         <div className=" absolute left-1/2 bottom-[-6rem] sm:bottom-[-6rem] lg:bottom-[-8rem] transform -translate-x-1/2 flex flex-col justify-center items-center">
           <img
-            src={Biodata?.profileImage || `../src/assets/profilepic.png`}
+            src={Biodata?.profileImage || `/profilepic.png`}
             alt="profile"
             className="w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 rounded-full object-cover border-4 border-white
    "
@@ -69,7 +69,7 @@ const Profile = (props) => {
             <span>Current role </span>{" "}
             <img
               className=" h-5 mb-1 filter grayscale-25"
-              src="../public/bagicon.png"
+              src="/bagicon.png"
               alt=""
             />{" "}
           </span>
@@ -91,7 +91,7 @@ const Profile = (props) => {
         <div className="skills capitalize max-w-1/2 space-y-3">
           <span className="flex font-bold text-[#737373] text-xl md:text-2xl xl:text-4xl  lg:text-3xl items-center justify-end gap-1">
             Skils{" "}
-            <img className="h-6 mt-1 " src="../public/gstar.png" alt="" />
+            <img className="h-6 mt-1 " src="/gstar.png" alt="" />
           </span>
           <span className="text-sm md:text-md  lg:text-xl xl:text-2xl flex flex-wrap gap-1 ">
             {" "}
