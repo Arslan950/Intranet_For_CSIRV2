@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-
+import { uri } from "../URL";
 
 //! alerts===Notices
 
@@ -11,7 +11,7 @@ const NoticeBoard = ({ token, role, username, Classes, heading }) => {
 
   const fetch_alerts = async () => {
     try {
-      const res = await axios.get("http://localhost:3001/alerts", {
+      const res = await axios.get(`${uri}/alerts`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setallalerts(res.data || []);
@@ -32,7 +32,7 @@ const NoticeBoard = ({ token, role, username, Classes, heading }) => {
     formData.append("file", pdfalert);
 
     try {
-      await axios.post("http://localhost:3001/alerts", formData, {
+      await axios.post(`${uri}/alerts`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setalert(null);
@@ -46,7 +46,7 @@ const NoticeBoard = ({ token, role, username, Classes, heading }) => {
 
   const handleDelete = async (filename) => {
     try {
-      await axios.delete(`http://localhost:3001/alerts/${filename}`, {
+      await axios.delete(`${uri}/alerts/${filename}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast("✅ Alert deleted");
@@ -59,7 +59,7 @@ const NoticeBoard = ({ token, role, username, Classes, heading }) => {
 
   const handlePrev = async (filename) => {
     try {
-      const res = await axios.get(`http://localhost:3001/alerts/${filename}`, {
+      const res = await axios.get(`${uri}/alerts/${filename}`, {
         responseType: "blob",
         headers: { Authorization: `Bearer ${token}` },
       });

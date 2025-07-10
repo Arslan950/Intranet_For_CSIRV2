@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { uri } from "../components/URL";
 const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
   const navigate = useNavigate();
   const [logined, setlogined] = useState(false)
@@ -30,7 +31,7 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
     //something
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3001/register", form);
+      await axios.post(`${uri}/register`, form);
       // alert("✅Register Succesfull!!!");
       setlogined(true)
       setMessage("✅ Register Succesfull!!!")
@@ -49,7 +50,7 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3001/login", form);
+      const res = await axios.post(`${uri}/login`, form);
 
       if (res.data.token) {
         login(res.data.token); // Set token (triggers authenticated)

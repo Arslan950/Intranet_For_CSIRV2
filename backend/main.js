@@ -14,7 +14,11 @@ dotenv.config(); // Load environment variables
 
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://your-production-site.com'], // ✅ allow frontend dev & production
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true // if you're using cookies/auth headers
+}));
 app.use(express.json()); // Important for reading JSON body
 
 

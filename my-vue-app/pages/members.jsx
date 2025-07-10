@@ -1,13 +1,14 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import { uri } from "../components/URL";
 const Members = (props) => {
   const [members, setMembers] = useState([]);
  console.log("Logged in as:", props.username, props.role);
 
   const handleMemberFetch = async () => {
     try {
-      const res = await axios.get("http://localhost:3001/members", {
+      const res = await axios.get(`${uri}/members`, {
         headers: {
           Authorization: `Bearer ${props.token}`,
         },
@@ -25,7 +26,7 @@ const Members = (props) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/members/${id}`, {
+      await axios.delete(`${uri}/members/${id}`, {
         headers: {
           Authorization: `Bearer ${props.token}`,
         },

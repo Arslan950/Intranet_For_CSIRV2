@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {  toast } from "react-toastify";
-
+import { uri } from "../URL";
 const Announcement = ({ token, role, username ,Classes}) => {
 const hideSections = location.pathname === "/";
 //!noticec===announcements
@@ -19,7 +19,7 @@ const hideSections = location.pathname === "/";
   const handlePost = async () => {
     if (ntext.notice === "" || ntext.title === ""){ toast("Notice or Title can't be empty!"); return}
     try {
-      await axios.post("http://localhost:3001/notice", ntext, {
+      await axios.post(`${uri}/notice`, ntext, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -36,7 +36,7 @@ const hideSections = location.pathname === "/";
 
   const fetchNotices = async () => {
     try {
-      const res = await axios.get("http://localhost:3001/notice", {
+      const res = await axios.get(`${uri}/notice`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -64,7 +64,7 @@ const hideSections = location.pathname === "/";
   async function handleDelete(id){
      try{
        
-      const res= await axios.delete(`http://localhost:3001/notice/${id}`, {
+      const res= await axios.delete(`${uri}/notice/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

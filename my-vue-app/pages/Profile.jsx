@@ -1,4 +1,5 @@
 import axios from "axios";
+import { uri } from "../components/URL";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 const Profile = (props) => {
@@ -7,7 +8,7 @@ const Profile = (props) => {
   const handleFetchProfile = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3001/user/${props.AdminName}/profile`,
+        `${uri}/user/${props.AdminName}/profile`,
         {
           headers: {
             Authorization: `Bearer ${props.token}`,

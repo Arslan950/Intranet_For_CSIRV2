@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { uri } from "../components/URL";
 import { useNavigate } from "react-router-dom";
 const ProfileForm = (props) => {
     const navigate=useNavigate();
@@ -34,7 +35,7 @@ const ProfileForm = (props) => {
         formData.append("profileImage",profilePic)
     }
    try {
-    const res=await axios.put(`http://localhost:3001/user/${props.AdminName}/profile`,formData, {
+    const res=await axios.put(`${uri}/user/${props.AdminName}/profile`,formData, {
         headers: {
           Authorization: `Bearer ${props.token}`,
         },

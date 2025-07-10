@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { uri } from "../URL";
 import { toast } from "react-toastify";
 const Document = ({ token, role, username, Classes }) => {
   const [filter, setFilter] = useState("");
@@ -10,7 +11,7 @@ const Document = ({ token, role, username, Classes }) => {
 
   const handleDownload = async (filename) => {
     try {
-      const res = await axios.get(`http://localhost:3001/file/${filename}`, {
+      const res = await axios.get(`${uri}/file/${filename}`, {
         responseType: "blob",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -32,7 +33,7 @@ const Document = ({ token, role, username, Classes }) => {
 
   const handlePrev = async (filename) => {
     try {
-      const res = await axios.get(`http://localhost:3001/file/${filename}`, {
+      const res = await axios.get(`${uri}/file/${filename}`, {
         responseType: "blob",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -48,7 +49,7 @@ const Document = ({ token, role, username, Classes }) => {
 
   const fetchFiles = async () => {
     try {
-      const res = await axios.get("http://localhost:3001/files", {
+      const res = await axios.get(`${uri}/files`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -94,7 +95,7 @@ const Document = ({ token, role, username, Classes }) => {
     formData.append("file", file);
 
     try {
-      await axios.post("http://localhost:3001/file", formData, {
+      await axios.post(`${uri}/file`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
@@ -110,7 +111,7 @@ const Document = ({ token, role, username, Classes }) => {
 
   const handleDelete = async (filename) => {
     try {
-      await axios.delete(`http://localhost:3001/file/${filename}`, {
+      await axios.delete(`${uri}/file/${filename}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast("✅ Deleted");
