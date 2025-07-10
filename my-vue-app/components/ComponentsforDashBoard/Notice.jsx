@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 
-const Alerts = ({ token, role, username, Classes }) => {
+//! alerts===Notices
+
+const NoticeBoard = ({ token, role, username, Classes, heading }) => {
   const [pdfalert, setalert] = useState(null);
   const [allalerts, setallalerts] = useState([]);
 
@@ -61,38 +63,55 @@ const Alerts = ({ token, role, username, Classes }) => {
         responseType: "blob",
         headers: { Authorization: `Bearer ${token}` },
       });
-      const url = window.URL.createObjectURL(new Blob([res.data], { type: "application/pdf" }));
+      const url = window.URL.createObjectURL(
+        new Blob([res.data], { type: "application/pdf" })
+      );
       window.open(url, "_blank");
     } catch (err) {
       console.error("Preview error:", err);
       toast("❌ Preview failed");
     }
   };
-const hideSections = location.pathname === "/";
+  const hideSections = location.pathname === "/";
 
   return (
-    <div className={`${Classes ?? "m-4"}`}>
+    <div
+      className={`${
+        Classes ?? "h-screen "
+      } border border-gray-200 shadow-md  bg-amber-50 `}
+    >
       <div className="space-y-4">
-        <h2
-  className="text-xl text-red-500 font-extrabold mb-2"
-  style={{ textShadow: "1px 1px 2px white" }}
->
-  📢 Announcements
-</h2>
-
+        <div className="bg-amber-300 py-2 text-center border-b border-gray-400">
+          <h2 className="text-lg font-bold text-[#f05757]">Notice</h2>
+        </div>
 
         {allalerts.length === 0 && (
           <p className="text-gray-400">No alerts available.</p>
         )}
 
-        {allalerts.map((data) => (
-          <div
-            key={data._id}
-            className="bg-white rounded-md p-3 flex flex-col shadow-sm"
-          >
-            <div className="flex justify-between items-center mb-2">
-              <span className="font-medium text-blue-700">{data.filename}</span>
-              {role === "admin" && (
+        {allalerts.map((data, index) => (
+          <div key={data._id} className=" md:py-2   px-3 flex flex-col ">
+            <div
+              className={`${
+                !hideSections ? `flex  justify-between items-center ` : ``
+              }  mb-1`}
+            >
+              <div className="flex  items-center">
+                {" "}
+                <div
+                  onClick={() => handlePrev(data.filename)}
+                  className="font-medium text-blue-700 cursor-pointer"
+                >
+                  {(data.filename).split(".")[0]}
+                </div>{" "}
+                <span className="underline">{data.title}</span>
+                {index === 0 && (
+                  <span className="ml-1 text-xs  text-white bg-red-600 font-bold px-1 max-h-6 py-0.5 rounded-sm">
+                    new
+                  </span>
+                )}
+              </div>
+              {role === "admin" && !hideSections && (
                 <button
                   onClick={() => handleDelete(data.filename)}
                   className="text-red-500 hover:text-red-700"
@@ -102,17 +121,17 @@ const hideSections = location.pathname === "/";
                 </button>
               )}
             </div>
-            <button
+            {/* <button
               onClick={() => handlePrev(data.filename)}
               className="text-sm text-green-600 hover:underline w-fit"
             >
               Open PDF
-            </button>
+            </button> */}
           </div>
         ))}
 
         {role === "admin" && !hideSections && (
-          <div className="mt-6">
+          <div className="mt-6 mx-3">
             <h2 className="text-xl">Upload New Announcement</h2>
             <div className="flex items-center justify-between mb-6">
               <input
@@ -134,4 +153,4 @@ const hideSections = location.pathname === "/";
   );
 };
 
-export default Alerts;
+export default NoticeBoard;

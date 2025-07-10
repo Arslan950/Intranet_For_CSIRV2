@@ -8,13 +8,14 @@ import Profile from "../pages/Profile";
 import ProfileForm from "../pages/ProfileForm";
 import Document from "../components/ComponentsforDashBoard/Document";
 import Members from "../pages/members";
-import Noticeboard from "../components/ComponentsforDashBoard/Noticeboard";
+import Noticeboard from "../components/ComponentsforDashBoard/Announcement";
 
 import SidebarLayout from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import ProtectedRoute from "../components/ProtectedRoute";
 import { useAuth } from "./hooks/useAuth";
-import Alerts from "../components/ComponentsforDashBoard/Alerts";
+import Announcements from "../components/ComponentsforDashBoard/Notice";
+import Footer from "../components/Footer";
 
 const App = () => {
   const [open, setopen] = useState(false);
@@ -134,7 +135,7 @@ const App = () => {
           <Route
             path="/notice"
             element={
-              <Noticeboard
+              <Announcements Announcements
                 token={auth.token}
                 AdminName={AdminName}
                 role={role}
@@ -148,7 +149,7 @@ const App = () => {
              <Route
             path="/alerts"
             element={
-              <Alerts
+              <Noticeboard
                 token={auth.token}
                 AdminName={AdminName}
                 role={role}
@@ -166,10 +167,4 @@ const App = () => {
 };
 
 export default App;
-// chaal ja lode
-// hello bro 12 45
-// last last 
-//comment by admin
-//comment by admin
 
-// change by Arslan.....

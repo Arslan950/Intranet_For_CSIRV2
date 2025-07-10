@@ -22,7 +22,7 @@ const ProfileForm = (props) => {
   const handleSubmit =async () => {
       const infoToSend = {
     ...personalInfo,
-    skills: personalInfo.skills.split(",").map(skill => skill.trim()) 
+    skills: personalInfo.skills?.split(",").map(skill => skill.trim()) 
        } // 👈 string ➝ array
   
 
@@ -48,7 +48,7 @@ const ProfileForm = (props) => {
 
     
    } catch (error) {
-    Console.log("Profile Update Failed Error:"+error);
+    console.log("Profile Update Failed Error:"+error);
        toast("ProfileUpdate Failed !!")  
 
     

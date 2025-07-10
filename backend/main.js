@@ -30,10 +30,7 @@ mongoose.connect(mongoURI).then(() => console.log("✅ Mongoose connected"))
 let gfs;
 
 // ✅ Create connection for GridFSBucket
-const conn = mongoose.createConnection(mongoURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+const conn = mongoose.createConnection(mongoURI);
 
 conn.once("open", () => {
   gfs = new GridFSBucket(conn.db, {
@@ -44,10 +41,7 @@ conn.once("open", () => {
 //gridbucket for alerts
 let gfs2;
 
-const conn2=mongoose.createConnection(mongoURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+const conn2=mongoose.createConnection(mongoURI);
 conn2.once("open", () => {
   gfs2 = new GridFSBucket(conn2.db, {
     bucketName: "alerts",
@@ -55,14 +49,19 @@ conn2.once("open", () => {
   console.log("✅ MongoDB & GridFSBucket2 connected");
 });
 
+
+app.get("/",(req,res)=>{
+  res.send("hello world!")
+})
+
 // 🗂️ Use multer memory storage for temporary file buffer
 const storage = multer.memoryStorage();
 
 const upload = multer({ storage });
 const alerts= multer({ storage });
 // ✅ Auth Routes (register/login)
-app.use("/", authRoutes);
 
+app.use("/", authRoutes);
 
 //POST for alerts 
 app.post("/alerts", authenticate, authorizeRole("admin"), alerts.single("file"), (req, res) => {

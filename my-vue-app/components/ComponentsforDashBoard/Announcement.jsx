@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {  toast } from "react-toastify";
 
-const Noticeboard = ({ token, role, username ,Classes}) => {
+const Announcement = ({ token, role, username ,Classes}) => {
 const hideSections = location.pathname === "/";
-
-  const [notices, setnotices] = useState([]);
+//!noticec===announcements
+  const [ notices, setnotices] = useState([]);
   const [ntext, setntext] = useState({
     notice: "",
     title: "",
@@ -81,22 +81,25 @@ const hideSections = location.pathname === "/";
   }
 
   return (
-    <div className={`  ${Classes ? Classes: `p-4 md:p-8 text-white bg-[#34495e] h-screen`}`}>
-      <h1 className="text-3xl font-bold mb-6 text-center">📌 Notice Board</h1>
+    <div className={`  ${Classes ? Classes: ` text-white bg-[#34495e] h-screen `}    bg-[#fffbeb]  shadow-md `}>
+      <h1 className="text-3xl bg-amber-300 py-2 text-[#f05757] font-bold mb-6 text-center">Announcements</h1>
 
-      <div className="grid gap-4 mb-10">
-        {notices.map((data, index) => (
+      <div className="grid gap-4 mb-4  ">
+      {!notices && <p>Noting to show</p>}  
+        {notices?.map((data, index) => (
           <div
             key={index}
-            className="bg-[#101826] border border-gray-700 p-4 rounded-lg shadow-md"
+            className="border   px-4 rounded-lg "
           >
             <div className="flex justify-between w-full">
               {" "}
-              <h3 className="text-xl font-semibold text-blue-400">
-                {data.title}
+              <h3 className="text-lg font-semibold text-green-500 ">
+               <span className="underline">{data.title}</span> <span className="ml-1 text-xs  text-white bg-red-600 font-bold px-1 py-0.5 rounded-sm">
+                      new
+                    </span>
               </h3>{" "}
              {  role==="admin" && <button 
-               className="bg-red-600 rounded-md "  onClick={()=>handleDelete(data._id)}>
+               className="bg-red-600 max-h-8 m-2 rounded-md "  onClick={()=>handleDelete(data._id)}>
                 <svg
                 
 
@@ -110,8 +113,8 @@ const hideSections = location.pathname === "/";
                 </svg>
               </button>}
             </div>
-            <p className="mt-2 text-gray-200">{data.notice}</p>
-            <div className="mt-3 text-sm text-gray-400 flex justify-between">
+            <p className="mt-2 text-black font-semibold">{data.notice}</p>
+            <div className="mt-5 text-sm text-gray-400 flex justify-between">
               <span>👤 {data.adminName}</span>
               <span>🕒 {new Date(data.uploadTime).toLocaleString()}</span>
             </div>
@@ -121,7 +124,7 @@ const hideSections = location.pathname === "/";
 
 
       {role === "admin" && !hideSections && (
-        <div className="bg-[#101826] p-6 rounded-lg shadow-lg max-w-xl mx-auto">
+        <div className="bg-gray-800 p-6 rounded-lg  shadow-lg max-w-xl  mx-4 sm:mx-auto">
           <h2 className="text-2xl font-bold mb-4">Post New Notice</h2>
           <input
             value={ntext.title}
@@ -159,4 +162,4 @@ const hideSections = location.pathname === "/";
   );
 };
 
-export default Noticeboard;
+export default Announcement;

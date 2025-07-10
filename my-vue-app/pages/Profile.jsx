@@ -95,7 +95,7 @@ const Profile = (props) => {
           <span className="text-sm md:text-md  lg:text-xl xl:text-2xl flex flex-wrap gap-1 ">
             {" "}
             {Biodata?.skills ? (
-              Biodata.skills[0].split(",").map((data, index) => {
+              Biodata.skills[0]?.split(",").map((data, index) => {
                 return (
                   <div
                     key={index}

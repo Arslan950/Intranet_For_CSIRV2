@@ -79,86 +79,136 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
   };
 
   return (
-    <div className="bg-[#1f2836] text-white flex justify-center items-center min-h-screen transition ease-in-out">
-      <div className="bg-[#101826] rounded-4xl p-6 max-w-sm w-full shadow-xl shadow-[#ffffff17]">
-        <h2 className="text-center text-white font-bold text-3xl mb-4 ">
-          Login
-        </h2>
-        <form>
-          <div className="mb-10 ">
-            <label htmlFor="" className="block text-xl font-semibold mb-5">
-              Email
-            </label>
+   <div className="h-full bg-white flex items-start justify-center pt-10 font-sans min-h-screen">
+  <div className="w-full max-w-md  mt-16 shadow-lg border border-gray-300">
+
+    {/* Top News Bar */}
+    {/* <div className="bg-red-700 text-white px-4 py-1 text-sm font-bold">
+      News Flash: <span className="font-normal">MERI will appear here</span>
+    </div> */}
+
+    {/* Header */}
+    <div className="bg-meri text-center py-6 border-b border-gray-400 bg-amber-300">
+      <h1 className="text-lg font-bold text-black">MERINet Login</h1>
+    </div>
+
+    {/* Form */}
+    <div className="bg-white p-6 space-y-4">
+      <form>
+        {/* Username */}
+        <div>
+          <label htmlFor="username" className="block text-sm font-semibold mb-1">Username</label>
+          <div className="flex items-center border border-gray-400 bg-white">
+            <span className="bg-gray-200 p-2" role="img" aria-label="email">📧</span>
             <input
-             autoComplete="username"
+              autoComplete="username"
               name="username"
               onChange={handleChange}
               value={form.username}
               type="text"
-              className="w-full text-xl pl-4 py-2 text-blue-700 font-medium bg-white focus:outline-none rounded-2xl"
+              className="w-full p-2 text-black focus:outline-none"
             />
           </div>
-          <div className="mb-10">
-            <label htmlFor="" className="block text-xl font-semibold mb-5">
-              Password
-            </label>
+        </div>
+
+        {/* Password */}
+        <div>
+          <label htmlFor="password" className="block text-sm font-semibold mb-1">Password</label>
+          <div className="flex items-center border border-gray-400 bg-white">
+            <span className="bg-gray-200 p-2" role="img" aria-label="lock">🔒</span>
             <input
               name="password"
               onChange={handleChange}
               value={form.password}
               type="password"
-               autoComplete="current-password"
-              className="w-full text-xl pl-4 py-2 text-blue-700 font-medium bg-white focus:outline-none rounded-2xl"
+              autoComplete="current-password"
+              className="w-full p-2 text-black focus:outline-none"
             />
           </div>
-          <div className="text-xl mb-10 font-medium flex gap-x-3">
-            <label htmlFor="role">Role (Admin or User)</label>
-            <select
-              id="role"
-              name="role"
-              onChange={handleChange}
-              className="bg-white text-black rounded-lg px-1 " /*onChange={handleChange}*/
-            >
-              <option className="text-black text-sm" value="user">
-                User
-              </option>
-              <option className="text-black text-sm" value="admin">
-                Admin
-              </option>
-            </select>
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-4 mb-4 text-xl">
-            <button
-              // type="submit"
-              onClick={handleLogin}
-              className="bg-blue-400 w-full font-semibold text-white py-3 rounded-2xl hover:bg-blue-500  focus:ring focus:ring-orange-50 active:bg-blue-800"
-            >
-              Login
-            </button>
-            <button
-              onClick={handleRegister}
-              className="bg-blue-400 w-full focus:ring focus:ring-orange-50 font-semibold text-white py-3 rounded-2xl hover:bg-blue-500 active:bg-blue-800"
-            >
-              Register
-            </button>
-          </div>
-        </form>
-      </div>
-
-      <div className={`w-full ${logined? "flex": "hidden"}  h-screen  transition ease-in-out duration-100 items-center justify-center  backdrop-blur-sm absolute`}>
-        <div className="w-[300px] transition ease-out duration-500  flex flex-col p-3.5 gap-y-8 items-center justify-center  text-black bg-white rounded-md shadow-white shadow-2xl ">
-          <h1 className="text-2xl text-center font-bold"> {message}</h1>
-          <button onClick={()=>{
-         if (BtnACtion==="Proceed")   navigate("/");
-         else if (BtnACtion==="User Registered")   setlogined(false);
-         else if (BtnACtion==="Retry")   setlogined(false);
-
-
-          }} className="bg-green-600  text-white font-medium px-3 py-1 rounded-md">{`${BtnACtion}`}</button>
         </div>
-      </div>
+
+        {/* Role as Radio */}
+        <fieldset className="text-sm font-medium">
+          <legend>Login Mode:</legend>
+          <label className="ml-2">
+            <input
+              type="radio"
+              name="role"
+              value="user"
+              checked={form.role === "user"}
+              onChange={handleChange}
+              className="mr-1"
+            />
+            User
+          </label>
+          <label className="ml-4">
+            <input
+              type="radio"
+              name="role"
+              value="admin"
+              checked={form.role === "admin"}
+              onChange={handleChange}
+              className="mr-1"
+            />
+            Admin
+          </label>
+        </fieldset>
+
+        {/* Buttons */}
+        <div className="flex gap-2 mt-4">
+          <button
+            onClick={handleLogin}
+            className="flex-1 bg-blue-600 text-white py-2 font-semibold hover:bg-blue-700"
+          >
+            🔐 Login
+          </button>
+          <button
+            onClick={handleRegister}
+            className="flex-1 border border-blue-600 text-blue-700 font-semibold hover:bg-blue-100"
+          >
+            👤 Register
+          </button>
+        </div>
+
+        {/* Forgot Password */}
+        <div className="text-center text-sm mt-2">
+          <a href="#" className="text-blue-600 hover:underline">Forgot Password?</a>
+        </div>
+      </form> 
     </div>
+
+    {/* Support Notice */}
+    <div className="bg-[#ffe49a] text-sm text-center px-4 py-2 border-t border-gray-300">
+      For technical assistance, please contact:<br />
+      <strong>
+        IT Support at <a href="mailto:support@cmeri.res.in" className="text-blue-600 underline">support@cmeri.res.in</a>
+      </strong>
+    </div>
+
+    {/* Footer */}
+    <div className="text-center text-xs text-gray-700 py-3 border-t border-gray-300">
+      © 2011 CMERI Durgapur | All Rights Reserved<br />
+      Developed & Maintained by <a href="#" className="text-blue-600 underline">IT Group</a>
+    </div>
+  </div>
+
+  {/* Popup Overlay */}
+  <div className={`w-full ${logined ? "flex" : "hidden"} h-screen transition ease-in-out duration-100 items-center justify-center backdrop-blur-sm absolute`}>
+    <div className="w-[300px] transition ease-out duration-500 flex flex-col p-3.5 gap-y-8 items-center justify-center text-black bg-white rounded-md shadow-white shadow-2xl">
+      <h1 className="text-2xl text-center font-bold">{message}</h1>
+      <button
+        onClick={() => {
+          if (BtnACtion === "Proceed") navigate("/");
+          else setlogined(false);
+        }}
+        className="bg-green-600 text-white font-medium px-3 py-1 rounded-md"
+      >
+        {BtnACtion}
+      </button>
+    </div>
+  </div>
+</div>
+
   );
 };
 
