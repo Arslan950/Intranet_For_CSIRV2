@@ -34,7 +34,7 @@ const SidebarLayout = ({  open, setopen }) => {
             🚨 <span className={`transition ease-in duration-500 ${open? "block":"hidden"}`} >{open && "Alerts"}</span>
           </Link>
           <Link to={"/profile"} className="px-3 flex justify-start items-center py-2 hover:bg-[#3949ab]  cursor-pointer">
-            <img src="../src/assets/profile.png" alt="" /> <span className={`transition ease-in duration-500 ${open? "block":"hidden"}`} > {open && "Profile"}</span>
+            <img src="/profile.png" alt="" /> <span className={`transition ease-in duration-500 ${open? "block":"hidden"}`} > {open && "Profile"}</span>
           </Link>
         </nav>
       </div>
