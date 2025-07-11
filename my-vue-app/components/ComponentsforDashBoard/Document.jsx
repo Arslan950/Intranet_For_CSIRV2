@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { uri } from "../URL";
 import { toast } from "react-toastify";
+import { useAuth } from "../../src/hooks/useAuth";
 const Document = ({ token, role, username, Classes }) => {
   const [filter, setFilter] = useState("");
   const [files, setFiles] = useState([]);
   const [file, setFile] = useState(null);
   const [filteredFiles, setFilteredFiles] = useState(null);
-
+  const auth=useAuth()
+  const setLoading=auth.loadingSet
 
   const handleDownload = async (filename) => {
+    setLoading(true)
     try {
       const res = await axios.get(`${uri}/file/${filename}`, {
         responseType: "blob",
@@ -28,6 +31,8 @@ const Document = ({ token, role, username, Classes }) => {
     } catch (err) {
       toast("❌ Download failed");
       console.error(err);
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -48,6 +53,7 @@ const Document = ({ token, role, username, Classes }) => {
   };
 
   const fetchFiles = async () => {
+    setLoading(true)
     try {
       const res = await axios.get(`${uri}/files`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -56,6 +62,8 @@ const Document = ({ token, role, username, Classes }) => {
       setFiles(res.data);
     } catch (err) {
       console.error("Failed to fetch files:", err);
+    }finally{
+      setLoading(false)
     }
   };
   const handlefilter = () => {
@@ -90,6 +98,7 @@ const Document = ({ token, role, username, Classes }) => {
   }, []);
 
   const handleUpload = async () => {
+    setLoading(true)
     if (!file) return toa("No file selected");
     const formData = new FormData();
     formData.append("file", file);
@@ -106,10 +115,13 @@ const Document = ({ token, role, username, Classes }) => {
       fetchFiles();
     } catch (err) {
       console.log("❌ Upload failed");
+    }finally{
+      setLoading(false)
     }
   };
 
   const handleDelete = async (filename) => {
+    setLoading(true)
     try {
       await axios.delete(`${uri}/file/${filename}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -118,18 +130,20 @@ const Document = ({ token, role, username, Classes }) => {
       fetchFiles();
     } catch (err) {
       console.log("❌ Delete failed");
+    }finally{
+      setLoading(false)
     }
   };
   const hideSections = location.pathname === "/";
 
   return (
-    <div className={`${Classes ? Classes : `bg-[#212b34] h-screen`} border  bg-amber-50 shadow-md`}>
+    <div className={`${Classes ? Classes : `bg-[#212b34] h-screen`} border bg-box-col shadow-md`}>
    
 
       {/* Files List */}
       <div className="flex flex-col gap-y-2  ">
-         <div className=" py-2 text-center border-b border-gray-400 bg-amber-300">
-         <h2 className="text-lg font-bold text-[#f05757]">Downloads</h2>
+         <div className=" py-2 text-center border-b border-gray-400 bg-heading">
+         <h2 className="text-lg font-bold text-Color">Downloads</h2>
       </div>
        <div className=" h-12 flex items-center  -8 mx-2 justify-center px-2 gap-4 ">
         {" "}
@@ -145,11 +159,14 @@ const Document = ({ token, role, username, Classes }) => {
         </button>
       </div>
         <ul className="divide-y  divide-gray-400">
-        {!files && <li>Nothing to ahow</li>}  
+        {!files &&  <div className="relative flex h-40 w-full items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-gray-400 via-gray-300 to-gray-400 shadow-inner">
+    <div className="absolute inset-0 animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+    <div className="font-[] relative z-10 text-xl font-semibold tracking-wide text-gray-500">Fetching data...</div>
+  </div>}  
           {(filteredFiles? filteredFiles:files)?.map((f, i) => (
             <li
               key={f._id}
-              className="flex justify-between   items-center py-3 hover:bg-amber-100 px-2 rounded flex-wrap"
+              className="flex justify-between   items-center py-3 bg-hover-col px-2 rounded flex-wrap"
             >
               <span
                 className="text-black text-sm cursor-pointer hover:underline"
@@ -203,92 +220,3 @@ const Document = ({ token, role, username, Classes }) => {
 export default Document;
 
 
-
-/*import React, { useState } from 'react';
-
-const Downloads = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const documents = [
-    {
-      name: 'Standard Process Sheets',
-      isNew: true,
-    },
-    {
-      name: "Bird's Eye View of CMERI Campus",
-      isNew: false,
-    },
-    {
-      name: 'Network Configuration Manual (LAN)',
-      isNew: false,
-    },
-    // Add more documents as needed
-  ];
-
-  const filteredDocs = documents.filter((doc) =>
-    doc.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  return (
-    <div className="max-w-xl mx-auto border border-gray-300 mt-6 shadow-md">
-      {/* Header */
-//       <div className="bg-meri py-2 text-center border-b border-gray-400 bg-amber-300">
-//         <h2 className="text-lg font-bold text-[#f05757]">Downloads</h2>
-//       </div>
-
-//       <div className="bg-amber-50">
-//         {/* Search Bar */}
-//         <div className="px-4 py-3 border-b border-gray-200">
-//           <div className="flex">
-//             <input
-//               type="text"
-//               placeholder="Search documents..."
-//               value={searchQuery}
-//               onChange={(e) => setSearchQuery(e.target.value)}
-//               className="flex-1 px-3 py-2 border border-gray-400 text-sm focus:outline-none"
-//             />
-//             <button
-//               onClick={() => {}}
-//               className="ml-2 px-4 py-2 bg-meri text-black font-semibold border border-yellow-600 hover:bg-yellow-300 text-sm"
-//             >
-//               Search
-//             </button>
-//           </div>
-//         </div>
-
-//         {/* Document List */}
-//         <ul className="divide-y divide-gray-200 text-sm text-black">
-//           {filteredDocs.length > 0 ? (
-//             filteredDocs.map((doc, index) => (
-//               <li
-//                 key={index}
-//                 className="flex justify-between items-center px-4 py-2"
-//               >
-//                 <span>
-//                   {doc.name}
-//                   {doc.isNew && (
-//                     <span className="ml-1 text-xs text-white bg-red-600 font-bold px-1 py-0.5 rounded-sm">
-//                       new
-//                     </span>
-//                   )}
-//                 </span>
-//                 <div className="flex space-x-2">
-//                   <button className="text-blue-700 border border-blue-700 px-2 py-0.5 hover:bg-blue-100 text-xs">
-//                     Download
-//                   </button>
-//                   <button className="text-red-700 border border-red-700 px-2 py-0.5 hover:bg-red-100 text-xs">
-//                     Delete
-//                   </button>
-//                 </div>
-//               </li>
-//             ))
-//           ) : (
-//             <li className="px-4 py-2 text-gray-500">No documents found.</li>
-//           )}
-//         </ul>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Downloads; */

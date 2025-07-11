@@ -2,11 +2,16 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { uri } from "../components/URL";
+import { useAuth } from "../src/hooks/useAuth";
+
 const Members = (props) => {
   const [members, setMembers] = useState([]);
+  const auth=useAuth()
+  const setLoading=auth.loadingSet
  console.log("Logged in as:", props.username, props.role);
 
   const handleMemberFetch = async () => {
+    setLoading(true)
     try {
       const res = await axios.get(`${uri}/members`, {
         headers: {
@@ -17,6 +22,8 @@ const Members = (props) => {
     } catch (error) {
       console.error("❌ Failed to fetch members:", error.message);
       toast("Failed to fetch members.");
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -25,6 +32,7 @@ const Members = (props) => {
   }, []);
 
   const handleDelete = async (id) => {
+     setLoading(true)
     try {
       await axios.delete(`${uri}/members/${id}`, {
         headers: {
@@ -36,6 +44,8 @@ const Members = (props) => {
     } catch (error) {
       console.error("❌ Error:", error);
       toast("❌ Error deleting user");
+    }finally{
+      setLoading(false)
     }
   };
 

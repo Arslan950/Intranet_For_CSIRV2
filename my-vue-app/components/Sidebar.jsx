@@ -11,7 +11,7 @@ const SidebarLayout = ({  open, setopen }) => {
     <div className="flex min-h-screen ">
       {/* Sidebar */}
       <div
-        className={`bg-[#1a237e] text-white transition-all ease-in-out duration-300 ${
+        className={`bg-[#0c5a6f] text-white transition-all ease-in-out duration-300 ${
           open ? "w-60" : "w-14"
         } overflow-hidden flex flex-col`}
       >

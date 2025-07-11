@@ -12,10 +12,10 @@ const CyberSecurityTips = ({Classes}) => {
   ];
 
   return (
-    <div className={`max-w-full ${Classes}  bg-amber-50 shadow-md border border-gray-300`}>
+    <div className={`max-w-full ${Classes}  bg-box-col shadow-md border border-gray-300`}>
       {/* Header */}
-      <div className="bg-amber-300 py-2 text-center border-b border-gray-400">
-        <h2 className="text-lg font-bold text-[#f05757]">Cyber Security Tips</h2>
+      <div className="bg-heading py-2 text-center border-b border-gray-400">
+        <h2 className="text-lg font-bold text-Color">Cyber Security Tips</h2>
       </div>
 
       <div className=" p-4  flex flex-col justify-between">

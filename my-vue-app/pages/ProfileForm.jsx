@@ -3,7 +3,10 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { uri } from "../components/URL";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../src/hooks/useAuth";
+
 const ProfileForm = (props) => {
+  const loadingSet=useAuth().loadingSet
     const navigate=useNavigate();
   const [personalInfo, setpersonalInfo] = useState({
     username: "",
@@ -21,6 +24,8 @@ const ProfileForm = (props) => {
     setprofilePic(e.target.files[0]);
   };
   const handleSubmit =async () => {
+    loadingSet(true)
+
       const infoToSend = {
     ...personalInfo,
     skills: personalInfo.skills?.split(",").map(skill => skill.trim()) 
@@ -53,6 +58,9 @@ const ProfileForm = (props) => {
        toast("ProfileUpdate Failed !!")  
 
     
+   }finally{
+    loadingSet(false)
+
    }
   };
   return (

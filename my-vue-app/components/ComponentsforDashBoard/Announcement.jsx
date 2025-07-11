@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {  toast } from "react-toastify";
 import { uri } from "../URL";
+import {useAuth} from "../../src/hooks/useAuth"
+import { use } from "react";
 const Announcement = ({ token, role, username ,Classes}) => {
 const hideSections = location.pathname === "/";
+const auth=useAuth()
+const setLoading=auth.loadingSet 
 //!noticec===announcements
   const [ notices, setnotices] = useState([]);
   const [ntext, setntext] = useState({
@@ -18,6 +22,7 @@ const hideSections = location.pathname === "/";
 
   const handlePost = async () => {
     if (ntext.notice === "" || ntext.title === ""){ toast("Notice or Title can't be empty!"); return}
+    setLoading(true)
     try {
       await axios.post(`${uri}/notice`, ntext, {
         headers: {
@@ -31,10 +36,15 @@ const hideSections = location.pathname === "/";
       fetchNotices();
     } catch (err) {
       toast("❌ Upload failed: " + err.message);
+    }finally{
+    setLoading(false)
+
     }
   };
 
   const fetchNotices = async () => {
+    setLoading(true)
+
     try {
       const res = await axios.get(`${uri}/notice`, {
         headers: {
@@ -54,6 +64,9 @@ const hideSections = location.pathname === "/";
     } catch (err) {
       console.error("Fetch error:", err);
       toast("❌Notice Fetch failed: " + err.message);
+    }finally{
+    setLoading(false)
+
     }
   };
 
@@ -62,6 +75,7 @@ const hideSections = location.pathname === "/";
   }, []);
 
   async function handleDelete(id){
+    setLoading(true)
      try{
        
       const res= await axios.delete(`${uri}/notice/${id}`, {
@@ -77,12 +91,15 @@ const hideSections = location.pathname === "/";
        console.log("Error when deleting Notice :"+err)
        toast("Error when deleting Notice :"+err)
    
+     }finally{
+    setLoading(false)
+
      }
   }
 
   return (
-    <div className={`  ${Classes ? Classes: ` text-white bg-[#34495e] h-screen `}    bg-[#fffbeb]  shadow-md `}>
-      <h1 className="text-3xl bg-amber-300 py-2 text-[#f05757] font-bold mb-6 text-center">Announcements</h1>
+    <div className={`  ${Classes ? Classes: ` text-white  h-screen `}    bg-box-col shadow-md `}>
+      <h1 className="text-3xl bg-heading  py-2 text-Color font-bold mb-6 text-center">Announcements</h1>
 
       <div className="grid gap-4 mb-4  ">
       {!notices && <p>Noting to show</p>}  

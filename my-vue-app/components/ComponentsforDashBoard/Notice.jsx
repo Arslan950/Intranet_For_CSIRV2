@@ -2,14 +2,16 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { uri } from "../URL";
-
+import { useAuth } from "../../src/hooks/useAuth";
 //! alerts===Notices
 
 const NoticeBoard = ({ token, role, username, Classes, heading }) => {
   const [pdfalert, setalert] = useState(null);
   const [allalerts, setallalerts] = useState([]);
-
+  const auth=useAuth()
+ const setLoading=auth.loadingSet
   const fetch_alerts = async () => {
+    setLoading(true)
     try {
       const res = await axios.get(`${uri}/alerts`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -18,6 +20,8 @@ const NoticeBoard = ({ token, role, username, Classes, heading }) => {
     } catch (error) {
       console.error("Fetch error:", error);
       toast("❌ Failed to fetch alerts");
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -27,10 +31,10 @@ const NoticeBoard = ({ token, role, username, Classes, heading }) => {
 
   const handleUpload = async () => {
     if (!pdfalert) return toast("⚠️ No file selected");
-
+loadingSet(true)
     const formData = new FormData();
     formData.append("file", pdfalert);
-
+ 
     try {
       await axios.post(`${uri}/alerts`, formData, {
         headers: { Authorization: `Bearer ${token}` },
@@ -41,10 +45,13 @@ const NoticeBoard = ({ token, role, username, Classes, heading }) => {
     } catch (err) {
       console.error("Upload error:", err);
       toast("❌ Upload failed");
+    }finally{
+      setLoading(false)
     }
   };
 
   const handleDelete = async (filename) => {
+    setLoading(true)
     try {
       await axios.delete(`${uri}/alerts/${filename}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -54,10 +61,13 @@ const NoticeBoard = ({ token, role, username, Classes, heading }) => {
     } catch (err) {
       console.error("Delete error:", err);
       toast("❌ Delete failed");
+    }finally{
+      setLoading(false)
     }
   };
 
   const handlePrev = async (filename) => {
+     setLoading(true)
     try {
       const res = await axios.get(`${uri}/alerts/${filename}`, {
         responseType: "blob",
@@ -70,6 +80,8 @@ const NoticeBoard = ({ token, role, username, Classes, heading }) => {
     } catch (err) {
       console.error("Preview error:", err);
       toast("❌ Preview failed");
+    }finally{
+      setLoading(false)
     }
   };
   const hideSections = location.pathname === "/";
@@ -78,11 +90,11 @@ const NoticeBoard = ({ token, role, username, Classes, heading }) => {
     <div
       className={`${
         Classes ?? "h-screen "
-      } border border-gray-200 shadow-md  bg-amber-50 `}
+      } border border-gray-200 shadow-md  bg-box-col `}
     >
       <div className="space-y-4">
-        <div className="bg-amber-300 py-2 text-center border-b border-gray-400">
-          <h2 className="text-lg font-bold text-[#f05757]">Notice</h2>
+        <div className="bg-heading py-2 text-center border-b border-gray-400">
+          <h2 className="text-lg font-bold text-Color ">Notice</h2>
         </div>
 
         {allalerts.length === 0 && (

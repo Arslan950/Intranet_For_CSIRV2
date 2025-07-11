@@ -2,13 +2,13 @@ import React from 'react';
 
 const MeriFooter = () => {
   return (
-    <footer className="bg-white border-t text-xs text-gray-700 mt-10">
+    <footer className="bg-white border-t text-xs text-gray-400 mt-10">
       <div className="max-w-screen-xl mx-auto px-4 py-6 space-y-4">
         
         {/* Support Notice */}
-        <div className="bg-yellow-100 text-center p-2 border rounded">
+        <div className="bg-heading text-gray-300   text-center p-2 border rounded">
           For contact or publishing any notice here, mail to: 
-          <strong className="text-blue-600"> merinet@cmeri.res.in</strong>
+          <strong className="text-Color"> merinet@cmeri.res.in</strong>
         </div>
 
         {/* Footer Links Grid */}

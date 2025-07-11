@@ -1,1 +1,17 @@
 @import "tailwindcss";
+.bg-heading{
+    background-color: #0E7490;
+
+}
+.text-Color{
+    color: #ffffff;
+}
+.bg-box-col {
+    background-color:#F0FDFA ;
+}
+.bg-hover-col:hover{
+    background-color:#d0f5ec ;
+}
+.bg-nav{
+    background-color: #0c5a6f;
+}

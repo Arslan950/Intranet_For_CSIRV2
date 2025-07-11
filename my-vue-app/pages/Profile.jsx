@@ -1,11 +1,16 @@
 import axios from "axios";
 import { uri } from "../components/URL";
+import { useAuth } from "../src/hooks/useAuth";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 const Profile = (props) => {
+const loadingSet=useAuth().loadingSet
+
   const [Biodata, setBiodata] = useState(null);
   const [lastUpdated, setLastUpdated] = useState(Date.now());
   const handleFetchProfile = async () => {
+    loadingSet(true)
+
     try {
       const res = await axios.get(
         `${uri}/user/${props.AdminName}/profile`,
@@ -20,6 +25,9 @@ const Profile = (props) => {
       console.log("Profile fetch successful");
     } catch (error) {
       console.log("profile Fetch failed " + error);
+    }finally{
+    loadingSet(false)
+
     }
   };
   useEffect(() => {

@@ -20,7 +20,7 @@ const Navbar = (props) => {
 
   return (
     <div className="">
-      <ul className="flex justify-between text-white font-medium bg-[#ef5350] w-full h-12 text- p-2">
+      <ul className="flex justify-between text-white font-medium bg-[#0c5a6f] w-full h-12 text- p-2">
         <div className="flex items-center gap-1.5  j w-1/2">
           <img
             onClick={handleYes}
@@ -46,7 +46,7 @@ const Navbar = (props) => {
 
           </Link>
           <button
-            className="bg-[#f05757]    sm:py-1 hover:bg-white transition ease-out duration-150 active:ring-1 active:ring-blue-200 hover:text-[#f05757] rounded-2xl font-bold border-2  border-white px-2 capitalize text-sm pb-[2px ] hover:bg-red-700"
+            className="   sm:py-1 hover:bg-white transition ease-out duration-150 active:ring-1 active:ring-blue-200 hover:text-[#0c5a6f] rounded-2xl font-bold border-2  border-white px-2 capitalize text-sm pb-[2px ] hover:bg-red-700"
             onClick={handleLogout}
           >
             {props.role} {props.username}:{" "}

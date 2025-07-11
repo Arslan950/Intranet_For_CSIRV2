@@ -9,12 +9,13 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
   const [logined, setlogined] = useState(false)
   const [message, setMessage] = useState('')
   const [BtnACtion, setBtnACtion] = useState('')
-
+  const [loading2, setLoading2] = useState(false); 
   const [form, setform] = useState({
     username: "",
     password: "",
     role: "user",
   });
+  
   const updateRole = (newRole) => {
     setrole(newRole);
     localStorage.setItem("role", newRole);
@@ -30,6 +31,7 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
   const handleRegister = async (e) => {
     //something
     e.preventDefault();
+    setLoading2(true)
     try {
       await axios.post(`${uri}/register`, form);
       // alert("✅Register Succesfull!!!");
@@ -45,10 +47,13 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
       setMessage("❌ Register Failed!!!")
       setBtnACtion("Retry")
 
+    }finally{
+      setLoading2(false)
     }
   };
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading2(true)
     try {
       const res = await axios.post(`${uri}/login`, form);
 
@@ -76,6 +81,8 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
       
       setMessage(`❌ Login Failed`)
       setBtnACtion("Retry")
+    }finally{
+      setLoading2(false)
     }
   };
 
@@ -194,7 +201,7 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
   </div>
 
   {/* Popup Overlay */}
-  <div className={`w-full ${logined ? "flex" : "hidden"} h-screen transition ease-in-out duration-100 items-center justify-center backdrop-blur-sm absolute`}>
+  <div className={`w-full ${logined ? "flex" : "hidden"} h-[80vh] transition ease-in-out duration-100 items-center justify-center backdrop-blur-sm absolute`}>
     <div className="w-[300px] transition ease-out duration-500 flex flex-col p-3.5 gap-y-8 items-center justify-center text-black bg-white rounded-md shadow-white shadow-2xl">
       <h1 className="text-2xl text-center font-bold">{message}</h1>
       <button
@@ -208,6 +215,15 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
       </button>
     </div>
   </div>
+  {loading2 && (
+  <div className="fixed inset-0 backdrop-blur-2xl bg-opacity-50 z-50 flex items-center justify-center">
+    <div className="bg-white p-6 rounded-md shadow-lg text-center">
+      <h2 className="text-lg font-semibold mb-2">Loading...</h2>
+      <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
+    </div>
+  </div>
+)}
+
 </div>
 
   );

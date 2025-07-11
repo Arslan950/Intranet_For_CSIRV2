@@ -15,15 +15,15 @@ import Navbar from "../components/Navbar";
 import ProtectedRoute from "../components/ProtectedRoute";
 import { useAuth } from "./hooks/useAuth";
 import Announcements from "../components/ComponentsforDashBoard/Notice";
-import Footer from "../components/Footer";
-
+import LoaderModal from "../components/LoaderModal"
 const App = () => {
   const [open, setopen] = useState(false);
   const [role, setrole] = useState(() => localStorage.getItem("role") || "user");
   const [AdminName, setAdminName] = useState(() => localStorage.getItem("AdminName") || "None");
-
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const auth = useAuth();
+  const loadpopup=auth.loading
 
   useEffect(() => {
     if (!auth.authenticated) {
@@ -34,6 +34,15 @@ const App = () => {
   return (
     <div className="relative">
       <ToastContainer />
+      {/* {loading && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+    <div className="bg-white p-6 rounded-md shadow-lg text-center">
+      <h2 className="text-lg font-semibold mb-2">Loading...</h2>
+      <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
+    </div>
+  </div>
+)} */}
+
 
       {/* Navbar shown across all routes */}
       <Navbar
@@ -56,6 +65,7 @@ const App = () => {
               login={auth.login}
               setrole={setrole}
               authenticated={auth.authenticated}
+              setLoading={setLoading}
             />
           }
         />
@@ -162,6 +172,8 @@ const App = () => {
           />
         </Route>
       </Routes>
+            <LoaderModal  loading={loadpopup} message="Fetching data..." />
+      
     </div>
   );
 };
