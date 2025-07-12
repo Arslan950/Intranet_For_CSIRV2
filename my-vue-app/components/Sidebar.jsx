@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
@@ -6,20 +6,27 @@ const SidebarLayout = ({  open, setopen }) => {
 //   const [open, setOpen] = useState(true);
 
   const toggleSidebar = () => setopen(!open);
+// useEffect(() => {
+//   if (open) {
+//     document.body.classList.add("no-scroll");
+//   } else {
+//     document.body.classList.remove("no-scroll");
+//   }
+// }, [open]);
 
   return (
-    <div className="flex min-h-screen ">
+    <div className="flex min-h-screen   ">
       {/* Sidebar */}
       <div
-        className={`bg-[#0c5a6f] text-white transition-all ease-in-out duration-300 ${
-          open ? "w-60" : "w-14"
+        className={`bg-[#0c5a6f] text-white z-50 transition-all ease-in-out duration-300 fixed h-screen     ${
+          open ? "w-60 " : "w-0  sm:w-14 "
         } overflow-hidden flex flex-col`}
       >
         {/* Header with toggle button always visible */}
         {/* <button onClick={toggleSidebar}>{open? "Dashboard":"x"}</button> */}
         {/* Navigation Items */}
 
-        <nav className="flex-1 mt-4 space-y-2 ">
+        <nav className="flex-1 space-y-2 ">
           <Link  to={"/document"} className=" flex justify-start items-center py-2 px-3 hover:bg-[#3949ab] cursor-pointer">
            <span>📁</span>  <span className={`transition ease-in duration-500 ${open? "block":"hidden"}`} > {open && "Documents"}</span>
           </Link>
@@ -40,8 +47,8 @@ const SidebarLayout = ({  open, setopen }) => {
       </div>
 
       {/* Main Content Area */}
-      <main className="w-full ">
-        <Outlet/>
+      <main className={`w-full  sm:ml-14`}>
+        <Outlet />
         </main>
     </div>
   );

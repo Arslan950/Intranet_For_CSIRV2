@@ -32,7 +32,7 @@ const App = () => {
   }, [auth.authenticated]);
 
   return (
-    <div className="relative">
+    <div className="flex flex-col min-h-screen">
       <ToastContainer />
       {/* {loading && (
   <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
