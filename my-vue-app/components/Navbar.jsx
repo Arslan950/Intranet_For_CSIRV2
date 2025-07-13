@@ -69,7 +69,7 @@ const Navbar = (props) => {
         />
 
         <img
-          src="https://www.cmeri.res.in/sites/all/themes/cmerinew/logo.png"
+          src="https://dyncdn.exampathfinder.net/epf_n_attachments/organisation/0FdDdIMg/logo.png"
           alt="Logo"
           className="h-16  w-16 object-cover pt-[1px] ml-6 bg-white rounded-full"
         />
