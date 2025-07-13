@@ -19,7 +19,7 @@ const SidebarLayout = ({  open, setopen }) => {
       {/* Sidebar */}
       <div
         className={`bg-[#0c5a6f] text-white z-50 transition-all ease-in-out duration-300 fixed h-screen     ${
-          open ? "w-60 " : "w-0  sm:w-14 "
+          open ? "w-45 " : "w-0  sm:w-14 "
         } overflow-hidden flex flex-col`}
       >
         {/* Header with toggle button always visible */}

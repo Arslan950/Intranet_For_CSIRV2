@@ -1,60 +1,98 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
+
 const Navbar = (props) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const hideSections = location.pathname === "/login";
+  const [yes, setyes] = useState(() => (hideSections === "/" ? false : true));
+  const myDate = new Date();
 
-  const [yes, setyes] = useState(()=>{hideSections ==="/"? false: true});
   const handleYes = () => {
     setyes(!yes);
     props.setopen(yes);
   };
+
   const handleLogout = () => {
-    // if stored manually
     props.setAdminName("None");
     props.setrole("user");
-    props.logout(); // your custom logout hook logic
+    props.logout();
     navigate("/login");
   };
 
   return (
-    <div className="mb-12">
-      <ul className="flex fixed  justify-between z-100 text-white font-medium bg-[#0c5a6f] w-full h-12 text- p-2">
-        <div className="flex items-center gap-1.5  j w-1/2">
-          <img
-            onClick={handleYes}
-            src="/menu.png"
-            alt="menu"
-            className="invert h-7 cursor-pointer transform rounded-full p-1 transition ease-out duration-200 hover:bg-[#88888846] hover:scale-105 "
-          />{" "}
-          <Link to="/" className="flex">
-            CSIR{" "}
-            <span className="hidden sm:block">
-              {" "}
-              :Council of Scientific & Industrial Research
-            </span>{" "}
-          </Link>
-        </div>
-        <div className="flex items-center gap-4">
-          <Link to={"https://github.com/Light200312/Intranet_For_CSIRV2.git"} className=" m-4">
-           <img 
-  className="h-12   hover:invert-0 hover:bg-white cursor-pointer rounded-full invert transition"
-  src="/GHIcon.png"
-  alt="GitHub Icon"
-/>
+    <>
+    <div className="mb-21">
+      <div className="fixed w-full z-100">
 
+    
+      {/* Top Header */}
+      <header className="bg-cyan-700 text-[12px] text-white w-full sm:flex    sm:justify-between max-h-6">
+        <span className="sm:flex sm:gap-1.5 sm:justify-start sm:items-center sm:text-l hidden px-4 py-2">
+          <svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 -960 960 960" width="24px" fill="#F3F3F3">
+            <path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z" />
+          </svg>
+          <p>{myDate.toDateString()}</p>
+        </span>
+
+        <span className=" sm:gap-3.5 sm:w-[40%] sm:justify-around sm:items-center sm:text-l sm:mr-3.5 flex justify-evenly items-center gap-3.5 ">
+          <Link to="/" className="hover:underline flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+              <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
+            </svg>
+            <p>Home</p>
           </Link>
-          <button
-            className=" flex  py-1 hover:bg-white transition ease-out duration-150 active:ring-1 active:ring-blue-200 hover:text-[#0c5a6f] rounded-2xl font-bold border-2  border-white px-2 capitalize text-sm pb-[2px ] hover:bg-red-700"
-            onClick={handleLogout}
-          >
-           <span className="hidden sm:block"> {props.role} {props.username}:</span>
-          <span className=""> {props.authenticated ? "Logout" : "login"}</span> 
-          </button>
+
+          <a href="https://www.cmeri.res.in/" target="_blank" rel="noreferrer" className="hover:underline flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+              <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
+            </svg>
+            <p>CSIR-CMERI</p>
+          </a>
+
+          <a onClick={handleLogout} className="hover:underline flex items-center gap-1 cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="24px" fill="#ffffffff">
+              <path d="M480-120q-75 0-140.5-28.5t-114-77q-48.5-48.5-77-114T120-480q0-75 28.5-140.5t77-114q48.5-48.5 114-77T480-840v80q-117 0-198.5 81.5T200-480q0 117 81.5 198.5T480-200v80Zm160-160-56-57 103-103H360v-80h327L584-624l56-56 200 200-200 200Z" />
+            </svg>
+            <p>{props.authenticated ? "Logout" : "Login"}</p>
+          </a>
+        </span>
+      </header>
+
+      {/* Sub Navbar */}
+      <nav className="bg-cyan-800 text-white  w-full h-16 flex justify-start items-center px-2">
+        <img
+          onClick={handleYes}
+          src="/menu.png"
+          alt="menu"
+          className="invert  h-8 w-8 cursor-pointer transform rounded-full p-1 transition ease-out duration-200 hover:bg-[#88888846] hover:scale-105"
+        />
+
+        <img
+          src="https://www.cmeri.res.in/sites/all/themes/cmerinew/logo.png"
+          alt="Logo"
+          className="h-16  w-16 object-cover pt-[1px] ml-6 bg-white rounded-full"
+        />
+
+        <div className="h-16 w-full sm:flex sm:flex-col sm:justify-center sm:items-center flex flex-col justify-center sm:ml-0 ml-3.5">
+          <div className="sm:text-xl sm:font-bold text-lg font-bold">CSIR-CMERI</div>
+          <div className="sm:text-lg text-xs">Center of Excellence and Farm Machinery, Ludhiana</div>
         </div>
-      </ul>
+
+        <Link
+          to="https://github.com/Light200312/Intranet_For_CSIRV2.git"
+          className="ml-auto mr-4"
+        >
+          <img
+            src="/GHIcon.png"
+            alt="GitHub Icon"
+            className="h-10 hover:invert-0 object-contain hover:bg-white cursor-pointer rounded-full invert transition"
+          />
+        </Link>
+      </nav>
+        </div>
     </div>
+    </>
   );
 };
 
