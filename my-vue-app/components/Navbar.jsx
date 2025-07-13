@@ -22,7 +22,7 @@ const Navbar = (props) => {
 
   return (
     <>
-    <div className="mb-21">
+    <div className="sm:mb-21 mb-10">
       <div className="fixed w-full z-100">
 
     

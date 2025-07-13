@@ -18,7 +18,7 @@ const SidebarLayout = ({  open, setopen }) => {
     <div className="flex min-h-screen   ">
       {/* Sidebar */}
       <div
-        className={`bg-[#0c5a6f] text-white z-50 transition-all ease-in-out duration-300 fixed h-screen     ${
+        className={`bg-[#0c596f] text-white z-50 transition-all ease-in-out duration-300 fixed h-screen     ${
           open ? "w-45 " : "w-0  sm:w-14 "
         } overflow-hidden flex flex-col`}
       >
@@ -27,20 +27,20 @@ const SidebarLayout = ({  open, setopen }) => {
         {/* Navigation Items */}
 
         <nav className="flex-1 space-y-2 ">
-          <Link  to={"/document"} className=" flex justify-start items-center py-2 px-3 hover:bg-[#3949ab] cursor-pointer">
+          <Link  to={"/document"} className=" flex justify-start items-center py-2 px-3 hover:bg-[#1d839f] cursor-pointer">
            <span>📁</span>  <span className={`transition ease-in duration-500 ${open? "block":"hidden"}`} > {open && "Documents"}</span>
           </Link>
-          <Link to={"/notice"} className="px-3 flex justify-start items-center py-2 hover:bg-[#3949ab]  cursor-pointer">
+          <Link to={"/notice"} className="px-3 flex justify-start items-center py-2 hover:bg-[#1d839f]  cursor-pointer">
             📌           <span className={`transition ease-in duration-500 ${open? "block":"hidden"}`} > {open && "Notices"}</span>
 
           </Link>
-          <Link to={"/member"} className="px-3 flex justify-start items-center py-2 hover:bg-[#3949ab]  cursor-pointer">
+          <Link to={"/member"} className="px-3 flex justify-start items-center py-2 hover:bg-[#1d839f]  cursor-pointer">
             👥 <span className={`transition ease-in duration-500 ${open? "block":"hidden"}`} >{open && "Members"}</span>
           </Link>
-           <Link to={"/alerts"} className="px-3 flex justify-start items-center py-2 hover:bg-[#3949ab]  cursor-pointer">
+           <Link to={"/alerts"} className="px-3 flex justify-start items-center py-2 hover:bg-[#1d839f]  cursor-pointer">
             🚨 <span className={`transition ease-in duration-500 ${open? "block":"hidden"}`} >{open && "Alerts"}</span>
           </Link>
-          <Link to={"/profile"} className="px-3 flex justify-start items-center py-2 hover:bg-[#3949ab]  cursor-pointer">
+          <Link to={"/profile"} className="px-3 flex justify-start items-center py-2 hover:bg-[#1d839f]  cursor-pointer">
             <img src="/profile.png" alt="" /> <span className={`transition ease-in duration-500 ${open? "block":"hidden"}`} > {open && "Profile"}</span>
           </Link>
         </nav>
