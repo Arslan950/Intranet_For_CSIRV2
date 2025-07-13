@@ -35,7 +35,7 @@ const Navbar = (props) => {
           <p>{myDate.toDateString()}</p>
         </span>
 
-        <span className=" sm:gap-3.5 sm:w-[40%] sm:justify-around sm:items-center sm:text-l sm:mr-3.5 flex justify-evenly items-center gap-3.5 ">
+        <span className=" md:w-[25%]  sm:w-[35%] sm:justify-around sm:items-center sm:text-l sm:mr-3.5 flex justify-around items-center  ">
           <Link to="/" className="hover:underline flex items-center gap-1">
             <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
               <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
@@ -65,16 +65,16 @@ const Navbar = (props) => {
           onClick={handleYes}
           src="/menu.png"
           alt="menu"
-          className="invert  h-8 w-8 cursor-pointer transform rounded-full p-1 transition ease-out duration-200 hover:bg-[#88888846] hover:scale-105"
+          className="invert  h-6 w-8 cursor-pointer transform rounded-full p-1 transition ease-out duration-200 hover:bg-[#88888846] hover:scale-105"
         />
 
         <img
           src="https://dyncdn.exampathfinder.net/epf_n_attachments/organisation/0FdDdIMg/logo.png"
           alt="Logo"
-          className="h-16  w-16 object-cover pt-[1px] ml-6 bg-white rounded-full"
+          className="h-12  w-16 object-cover pt-[1px] ml-6 bg-white rounded-full"
         />
 
-        <div className="h-16 w-full sm:flex sm:flex-col sm:justify-center sm:items-center flex flex-col justify-center sm:ml-0 ml-3.5">
+        <div className="h-16 w-full sm:flex sm:flex-col sm:justify-center sm:items-center flex flex-col justify-center sm:ml-0 ml-3.5 font-serif">
           <div className="sm:text-xl sm:font-bold text-lg font-bold">CSIR-CMERI</div>
           <div className="sm:text-lg text-xs">Center of Excellence and Farm Machinery, Ludhiana</div>
         </div>

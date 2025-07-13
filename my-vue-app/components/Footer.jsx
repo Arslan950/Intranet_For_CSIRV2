@@ -70,8 +70,8 @@ const MeriFooter = () => {
 
         {/* Copyright */}
         <div className="text-center text-xs text-gray-600 pt-3 border-t">
-          © 2009-2025 CMERI Durgapur | All Rights Reserved<br />
-          Developed & Maintained by <a href="https://merinet2.cmeri.res.in/developer.php" className="text-blue-600" target="_blank">Web Developer Team</a>
+          © 2009-2025 CMERI Ludhiana | All Rights Reserved<br />
+          Developed & Maintained by <a href="https://github.com/Light200312/Intranet_For_CSIRV2.git" className="text-blue-600" target="_blank">Web Developer Team(Trainees)</a>
         </div>
       </div>
     </footer>
