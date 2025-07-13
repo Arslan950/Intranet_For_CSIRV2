@@ -20,7 +20,7 @@ const Dashboard = ({ token, role, username ,open ,setopen})  => {
     // <SidebarLayout setopen={setopen} open={open}>
        <div className=" bg-[#ffff]">
       {/* <h2 className="capitalize py-4 font-bold  text-black text-center text-3xl">{role} Panel</h2> */}
-      <div className="p-6 grid grid-cols-4 text-white min-h-screen grid-flow-dense grid-flow gap-4 ">
+      <div className=" sm:p-6 p-1 sm:grid grid-cols-4 text-white min-h-screen grid-flow-dense grid-flow gap-4 ">
       {/* <ToastContainer/> */}
       <Document token={token}  username={username} role={role} Classes={`lg:col-span-1 sm:col-span-2 col-span-4 border-gray-300 `} />
       {/* Noticeboard Component */}

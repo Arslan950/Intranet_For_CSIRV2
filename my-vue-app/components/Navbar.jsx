@@ -27,7 +27,7 @@ const Navbar = (props) => {
 
     
       {/* Top Header */}
-      <header className="bg-cyan-700 text-[12px] text-white w-full sm:flex    sm:justify-between max-h-6">
+      <header className="bg-cyan-700 text-[12px] text-white w-full sm:flex hidden   sm:justify-between max-h-6">
         <span className="sm:flex sm:gap-1.5 sm:justify-start sm:items-center sm:text-l hidden px-4 py-2">
           <svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 -960 960 960" width="24px" fill="#F3F3F3">
             <path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z" />
@@ -60,7 +60,7 @@ const Navbar = (props) => {
       </header>
 
       {/* Sub Navbar */}
-      <nav className="bg-cyan-800 text-white  w-full h-16 flex justify-start items-center px-2">
+      <nav className="bg-cyan-800 text-white  w-full sm:h-16 h-10 flex justify-start items-center px-2">
         <img
           onClick={handleYes}
           src="/menu.png"
@@ -71,12 +71,12 @@ const Navbar = (props) => {
         <img
           src="https://dyncdn.exampathfinder.net/epf_n_attachments/organisation/0FdDdIMg/logo.png"
           alt="Logo"
-          className="h-12  w-16 object-cover pt-[1px] ml-6 bg-white rounded-full"
+          className="sm:h-12  h-8 object-cover pt-[1px] ml-6 bg-white rounded-full"
         />
 
         <div className="h-16 w-full sm:flex sm:flex-col sm:justify-center sm:items-center flex flex-col justify-center sm:ml-0 ml-3.5 font-serif">
           <div className="sm:text-xl sm:font-bold text-lg font-bold">CSIR-CMERI</div>
-          <div className="sm:text-lg text-xs">Center of Excellence and Farm Machinery, Ludhiana</div>
+          <div className="sm:text-lg text-xs hidden sm:block  ">Center of Excellence and Farm Machinery, Ludhiana</div>
         </div>
 
         <Link
@@ -86,7 +86,7 @@ const Navbar = (props) => {
           <img
             src="/GHIcon.png"
             alt="GitHub Icon"
-            className="h-10 hover:invert-0 object-contain hover:bg-white cursor-pointer rounded-full invert transition"
+            className="sm:h-10 hover:invert-0 object-contain hover:bg-white cursor-pointer rounded-full invert transition"
           />
         </Link>
       </nav>
