@@ -31,7 +31,7 @@ const NoticeBoard = ({ token, role, username, Classes, heading }) => {
 
   const handleUpload = async () => {
     if (!pdfalert) return toast("⚠️ No file selected");
-loadingSet(true)
+setLoading(true)
     const formData = new FormData();
     formData.append("file", pdfalert);
  
