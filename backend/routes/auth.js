@@ -75,8 +75,8 @@ router.delete("/members/:id", async (req, res) => {
 // ✅ LOGIN Route
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
-  console.log("📥 LOGIN BODY:", req.body);
-  console.log("🔐 Password received:", password, "| Type:", typeof password);
+  console.log("📥 LOGIN BODY Recieved")
+  console.log("🔐 Password received",  "| Type:", typeof password);
 
   const user = await User.findOne({ username });
 
@@ -103,7 +103,7 @@ router.post("/login", async (req, res) => {
 
   console.log("✅ Login successful:", username);
   res.send({ token, role: user.role, username });
-  console.log(token);
+  // console.log(token);
 });
 
 //user put api,to upload neccessey aditional info
