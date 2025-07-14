@@ -71,7 +71,7 @@ const Navbar = (props) => {
         <img
           src="https://dyncdn.exampathfinder.net/epf_n_attachments/organisation/0FdDdIMg/logo.png"
           alt="Logo"
-          className="sm:h-12  h-8 object-cover pt-[1px] ml-6 bg-white rounded-full"
+          className="sm:h-12  h-8 object-cover pt-[1px] ml-4 mr-2 bg-white rounded-full"
         /></Link>
 
         <Link to="/" className="h-16 w-full sm:flex sm:flex-col sm:justify-center sm:items-center flex flex-col justify-center sm:ml-0 ml-3.5 font-serif">
