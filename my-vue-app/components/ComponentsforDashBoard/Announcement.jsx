@@ -4,7 +4,7 @@ import {  toast } from "react-toastify";
 import { uri } from "../URL";
 import {useAuth} from "../../src/hooks/useAuth"
 import { use } from "react";
-const Announcement = ({ token, role, username ,Classes}) => {
+const Announcement = ({ token, role, username,AdminName ,Classes}) => {
 const hideSections = location.pathname === "/";
 const auth=useAuth()
 const setLoading=auth.loadingSet 
@@ -13,7 +13,7 @@ const setLoading=auth.loadingSet
   const [ntext, setntext] = useState({
     notice: "",
     title: "",
-    adminName: username || "Admin1",
+    adminName: AdminName || "Admin1",
   });
 
   const handlechange = (e) => {

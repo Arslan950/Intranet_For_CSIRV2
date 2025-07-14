@@ -67,17 +67,17 @@ const Navbar = (props) => {
           alt="menu"
           className="invert  h-6 w-8 cursor-pointer transform rounded-full p-1 transition ease-out duration-200 hover:bg-[#88888846] hover:scale-105"
         />
-
+<Link to={'/'}>
         <img
           src="https://dyncdn.exampathfinder.net/epf_n_attachments/organisation/0FdDdIMg/logo.png"
           alt="Logo"
           className="sm:h-12  h-8 object-cover pt-[1px] ml-6 bg-white rounded-full"
-        />
+        /></Link>
 
-        <div className="h-16 w-full sm:flex sm:flex-col sm:justify-center sm:items-center flex flex-col justify-center sm:ml-0 ml-3.5 font-serif">
+        <Link to="/" className="h-16 w-full sm:flex sm:flex-col sm:justify-center sm:items-center flex flex-col justify-center sm:ml-0 ml-3.5 font-serif">
           <div className="sm:text-xl sm:font-bold text-lg font-bold">CSIR-CMERI</div>
           <div className="sm:text-lg text-xs hidden sm:block  ">Center of Excellence and Farm Machinery, Ludhiana</div>
-        </div>
+        </Link> 
 
         <Link
           to="https://github.com/Light200312/Intranet_For_CSIRV2.git"

@@ -65,10 +65,10 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
         // alert("token lenght"+res.data.token.length)
         
         localStorage.setItem("AdminName",res.data.username)
-        setAdminName?.(res.data.username);
+        setAdminName(res.data.username);
         setMessage(`✅ Login Successful`)
         setBtnACtion("Proceed")
-        // alert(
+        // alert
         //   `✅ Login Successful as ${res.data.role}\n🔑 Token: ${res.data.token}`
         // );
 
@@ -96,8 +96,8 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
     </div> */}
 
     {/* Header */}
-    <div className="bg-meri text-center py-6 border-b border-gray-400 bg-amber-300">
-      <h1 className="text-lg font-bold text-black">MERINet Login</h1>
+    <div className="bg-meri text-center py-6 border-b border-gray-400 bg-heading ">
+      <h1 className="text-lg font-bold text-Color">MERINet Login</h1>
     </div>
 
     {/* Form */}
@@ -136,7 +136,7 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
         </div>
 
         {/* Role as Radio */}
-        <fieldset className="text-sm font-medium">
+        {/* <fieldset className="text-sm font-medium">
           <legend>Login Mode:</legend>
           <label className="ml-2">
             <input
@@ -160,7 +160,7 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
             />
             Admin
           </label>
-        </fieldset>
+        </fieldset> */}
 
         {/* Buttons */}
         <div className="flex gap-2 mt-4">
@@ -186,10 +186,10 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
     </div>
 
     {/* Support Notice */}
-    <div className="bg-[#ffe49a] text-sm text-center px-4 py-2 border-t border-gray-300">
+    <div className="bg-box-col text-sm text-center px-4 py-2 border-t border-gray-300">
       For technical assistance, please contact:<br />
       <strong>
-        IT Support at <a href="mailto:support@cmeri.res.in" className="text-blue-600 underline">support@cmeri.res.in</a>
+        IT Support at <a href="mailto:support@cmeri.res.in" className="text-blue-600 underline">rhaldar.cmeri@csir.res.in, 9051368379</a>
       </strong>
     </div>
 

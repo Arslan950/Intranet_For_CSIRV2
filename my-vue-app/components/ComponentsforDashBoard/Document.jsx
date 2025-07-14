@@ -143,9 +143,9 @@ const Document = ({ token, role, username, Classes }) => {
       {/* Files List */}
       <div className="flex flex-col gap-y-2  ">
          <div className=" py-2 text-center border-b border-gray-400 bg-heading">
-         <h2 className="text-lg font-bold text-Color">Downloads</h2>
+         <h2 className="text-lg font-bold  text-Color">Downloads</h2>
       </div>
-       <div className=" h-12 flex items-center  -8 mx-2 justify-center px-2 gap-4 ">
+       <div className=" h-12 flex items-center   mx-2 justify-center px-2 gap-4 ">
         {" "}
         <input
            

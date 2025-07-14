@@ -16,6 +16,7 @@ import ProtectedRoute from "../components/ProtectedRoute";
 import { useAuth } from "./hooks/useAuth";
 import Announcements from "../components/ComponentsforDashBoard/Notice";
 import LoaderModal from "../components/LoaderModal"
+import PDFgenerator from "../components/PDFgenerator";
 const App = () => {
   const [open, setopen] = useState(false);
   const [role, setrole] = useState(() => localStorage.getItem("role") || "user");
@@ -71,7 +72,7 @@ const App = () => {
         />
 
         {/* Protected routes with sidebar layout */}
-        <Route element={<SidebarLayout setopen={setopen} open={open} />}>
+        <Route element={<SidebarLayout role={role} setopen={setopen} open={open} />}>
           <Route
             path="/"
             element={
@@ -152,6 +153,7 @@ const App = () => {
                 setAdminName={setAdminName}
                 login={auth.login}
                 setrole={setrole}
+                username={AdminName}
                 authenticated={auth.authenticated}
               />
             }
@@ -170,7 +172,11 @@ const App = () => {
               />
             }
           />
+             <Route path="/pdfgenerator" element={<PDFgenerator/>}>
+
         </Route>
+        </Route>
+     
       </Routes>
             <LoaderModal  loading={loadpopup} message="Fetching data..." />
       
