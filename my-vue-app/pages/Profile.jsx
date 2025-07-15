@@ -38,10 +38,12 @@ const loadingSet=useAuth().loadingSet
     <div>
       <div className="relative">
         {/* Background Banner */}
-        <img
-          className="w-full h-[150px] sm:h-[200px] object-cover"
-          src="https://www.cmeri.res.in/sites/default/files/CoEFM_3.PNG"
-        />
+       <img
+  className="w-full h-[150px] sm:h-[250px] object-cover object-right sm:object-center rounded-lg"
+  src={'/cslogo.png'}
+  alt="Banner"
+/>
+
 
         {/* Profile Picture */}
         <div className=" absolute left-1/2 bottom-[-6rem] sm:bottom-[-6rem] lg:bottom-[-8rem] transform -translate-x-1/2 flex flex-col justify-center items-center">
