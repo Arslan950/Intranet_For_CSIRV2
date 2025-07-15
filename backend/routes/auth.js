@@ -43,16 +43,37 @@ router.post("/register", async (req, res) => {
 });
 router.get("/members", async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await User.find().select("-password -__v"); // remove sensitive fields
+
+    // Convert profileImage buffer to base64 if it exists
+    const transformedUsers = users.map((user) => {
+      const userObj = user.toObject();
+
+      if (userObj.profileImage && userObj.profileImage.data) {
+        userObj.profileImage = {
+          data: userObj.profileImage.data.toString("base64"),
+          contentType: userObj.profileImage.contentType || "image/jpeg",
+        };
+      } else {
+        userObj.profileImage = null;
+      }
+
+      return userObj;
+    });
+
     console.log(
-      users.length ? `Users fetched: ${users.length}` : "No users found"
+      transformedUsers.length
+        ? `✅ Users fetched: ${transformedUsers.length}`
+        : "⚠️ No users found"
     );
-    res.status(200).json(users); // ✅ Send as JSON, not string
+
+    res.status(200).json(transformedUsers);
   } catch (error) {
-    console.error("Error fetching users:", error);
-    res.status(500).send({ message: "Something went wrong: " + error.message });
+    console.error("❌ Error fetching users:", error);
+    res.status(500).json({ message: "Something went wrong: " + error.message });
   }
 });
+
 router.delete("/members/:id", async (req, res) => {
   try {
     const _id = req.params.id;
