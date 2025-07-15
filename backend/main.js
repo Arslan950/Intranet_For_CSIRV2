@@ -15,7 +15,7 @@ dotenv.config(); // Load environment variables
 
 const app = express();
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://intranet-for-csirv2.onrender.com'], // ✅ allow frontend dev & production
+  origin: ['http://localhost:5173', 'https://intranet-for-csirv2.onrender.com',"https://csir-intranet.onrender.com"], // ✅ allow frontend dev & production
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true // if you're using cookies/auth headers
 }));
