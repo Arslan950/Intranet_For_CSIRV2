@@ -40,8 +40,7 @@ const loadingSet=useAuth().loadingSet
         {/* Background Banner */}
         <img
           className="w-full h-[150px] sm:h-[200px] object-cover"
-          src="https://imgs.search.brave.com/khrUkYIeD_TAu7ZwcFB2i9vU9XE064EJ3qLStLsN6kc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzY3LzQwLzIx/LzM2MF9GXzI2NzQw/MjEwOV9qWnZzcVJR/VXZTeG9oQU9tY1V0/NTQ5amxhcHFvUkhN/MC5qcGc"
-          alt="bg-profile-pic"
+          src="https://www.cmeri.res.in/sites/default/files/CoEFM_3.PNG"
         />
 
         {/* Profile Picture */}

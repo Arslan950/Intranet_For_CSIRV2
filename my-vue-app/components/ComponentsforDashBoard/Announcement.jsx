@@ -98,7 +98,7 @@ const setLoading=auth.loadingSet
   }
 
   return (
-    <div className={`  ${Classes ? Classes: ` text-white  h-screen `}    bg-box-col shadow-md `}>
+    <div className={`  ${Classes ? Classes : ` text-white  h-screen `}    bg-box-col shadow-md `}>
       <h1 className="text-3xl bg-heading  py-2 text-Color font-bold mb-6 text-center">Announcements</h1>
 
       <div className="grid gap-4 mb-4  ">
