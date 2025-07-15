@@ -61,21 +61,22 @@ const Members = (props) => {
       {members.map((mem) => (
         <div
           key={mem._id}
-          className="group flex items-center justify-between rounded-2xl bg-white p-3 text-blue-900 hover:bg-[#e3e3e3] transition-all duration-200"
+          className="group flex items-center justify-between rounded-2xl bg-white p-3 text-blue-900 hover:bg-[#e3e3e3] transition-all duration-200 shadow-gray-200  border-b-1 border-gray-400 hover:scale-102 shadow-sm"
         >
           <div className="flex gap-2">
             {/* {console.log(mem.profileImage)} */}
             <img
-            // onLoad={console.log(mem.profileImage)}
-              className="h-6 rounded-full items-center justify-center"
+              // onLoad={console.log(mem.profileImage)}
+              className="h-12 rounded-lg items-center justify-center"
               src={
-                  mem.profileImage
-                    ? mem.profileImage.data
-                    : "/profilepic.png"
-                }
+                mem.profileImage
+                  ? `data:${mem.profileImage.contentType};base64,${mem.profileImage.data}`
+                  : "/profilepic.png"
+              }
               alt="profile"
             />
-            <div>{mem.username}</div>
+            <div> <div className="font-bold capitalize">{mem.username}</div> <div className="text-xs">{mem.email || "email not set"}</div></div>
+           
           </div>
           <div className=" group-hover:hidden">{mem.role}</div>
           {/*mem.username !== props.username &&
