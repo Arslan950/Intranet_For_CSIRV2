@@ -115,7 +115,7 @@ const setLoading=auth.loadingSet
                       new
                     </span>
               </h3>{" "}
-             {  role==="admin" && <button 
+             {  role==="admin"  && role==="superAdmin" && <button 
                className="bg-red-600 max-h-8 m-2 rounded-md "  onClick={()=>handleDelete(data._id)}>
                 <svg
                 
@@ -140,7 +140,7 @@ const setLoading=auth.loadingSet
       </div>
 
 
-      {role === "admin" && !hideSections && (
+      {(role === "admin"  || role==="superAdmin")  && !hideSections && (
         <div className="bg-gray-800 p-6 rounded-lg  shadow-lg max-w-xl  mx-4 sm:mx-auto">
           <h2 className="text-2xl font-bold mb-4">Post New Notice</h2>
           <input

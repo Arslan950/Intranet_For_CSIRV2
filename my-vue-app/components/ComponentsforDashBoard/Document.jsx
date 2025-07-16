@@ -196,7 +196,7 @@ const Document = ({ token, role, username, Classes }) => {
         </ul>
       </div>
       {/* File Upload for Admin */}
-      {role === "admin" && !hideSections && (
+      {(role === "admin"  || role==="superAdmin") && !hideSections && (
         <div className=" mt-3.5 flex flex-col items-center gap-4">
           <input
             type="file"

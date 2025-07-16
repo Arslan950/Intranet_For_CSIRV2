@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-
+import Contributors from "../pages/Contributors";
 import Loginpage from "../pages/Loginpage";
 import Dashboard from "../components/Dashboard";
 import Profile from "../pages/Profile";
@@ -70,6 +70,7 @@ const App = () => {
             />
           }
         />
+        <Route path="/contributors" element={<Contributors/>} />
 
         {/* Protected routes with sidebar layout */}
         <Route element={<SidebarLayout role={role} setopen={setopen} open={open} />}>
@@ -175,6 +176,7 @@ const App = () => {
              <Route path="/pdfgenerator" element={<PDFgenerator/>}>
 
         </Route>
+
         </Route>
      
       </Routes>

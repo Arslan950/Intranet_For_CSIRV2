@@ -79,7 +79,7 @@ const Navbar = (props) => {
           <div className="sm:text-lg text-xs hidden sm:block  ">Center of Excellence and Farm Machinery, Ludhiana</div>
         </Link> 
 
-        <Link
+        {/* <Link
           to="https://github.com/Light200312/Intranet_For_CSIRV2.git"
           className="ml-auto mr-4"
         >
@@ -88,7 +88,7 @@ const Navbar = (props) => {
             alt="GitHub Icon"
             className="sm:h-10 hover:invert-0 object-contain hover:bg-white cursor-pointer rounded-full invert transition"
           />
-        </Link>
+        </Link> */}
       </nav>
         </div>
     </div>

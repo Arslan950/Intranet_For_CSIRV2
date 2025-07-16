@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import dotenv from "dotenv";
 import multer from "multer";
+import {authenticate,authorizeRole} from '../middleware/auth.js'
 dotenv.config(); // Load environment variables
 const profile = multer({ storage: multer.memoryStorage() });
 const router = express.Router();
@@ -41,7 +42,7 @@ router.post("/register", async (req, res) => {
     res.status(400).send({ error: "User exists or invalid input" });
   }
 });
-router.get("/members", async (req, res) => {
+router.get("/members",authenticate, async (req, res) => {
   try {
     const users = await User.find().select("-password -__v"); // remove sensitive fields
 
@@ -74,7 +75,7 @@ router.get("/members", async (req, res) => {
   }
 });
 
-router.delete("/members/:id", async (req, res) => {
+router.delete("/members/:id",authenticate, async (req, res) => {
   try {
     const _id = req.params.id;
 
@@ -83,6 +84,7 @@ router.delete("/members/:id", async (req, res) => {
       console.log(`❌ No user found with ID: ${_id}`);
       return res.status(404).send({ message: "User not found" });
     }
+    if (user.role==="superAdmin") return res.status(400).send({message:"SuperAdmin Can't be deleted by admin "})
 
     await User.deleteOne({ _id });
     console.log("✅ User deleted successfully");
@@ -129,7 +131,7 @@ router.post("/login", async (req, res) => {
 
 //user put api,to upload neccessey aditional info
 router.put(
-  "/user/:username/profile",
+  "/user/:username/profile",authenticate,
   profile.single("profileImage"),
   async (req, res) => {
     try {
@@ -165,6 +167,35 @@ router.put(
   }
 );
 
+router.put(
+  "/user/:username/roleChange",
+  authenticate,
+  authorizeRole("superAdmin"), // Only superAdmin can use this route
+  async (req, res) => {
+    try {
+      const user = await User.findOne({ username: req.params.username });
+
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      if (user.role === "admin") {
+        return res.status(400).json({ message: "User is already an admin" });
+      }
+
+      user.role = req.body.role;
+      await user.save();
+
+      return res.status(200).json({
+        message: `User ${user.username} promoted to admin`,
+        role: user.role,
+      });
+    } catch (error) {
+      console.error("Role change error:", error);
+      return res.status(500).json({ message: "Internal Server Error" });
+    }
+  }
+);
 //get user/username/profile
 router.get("/user/:username/profile", async (req, res) => {
   try {

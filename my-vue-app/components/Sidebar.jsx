@@ -69,7 +69,7 @@ const SidebarLayout = ({ open, setopen, role }) => {
               {open && "PDF Generator"}
             </span>
           </Link>
-          {role === "admin" && (
+          {(role === "admin"  || role==="superAdmin") && (
             <Link
               to={"/member"}
               className="px-3 flex justify-start items-center py-2 hover:bg-[#1d839f]  cursor-pointer"

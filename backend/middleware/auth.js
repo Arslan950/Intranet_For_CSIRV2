@@ -22,9 +22,12 @@ export function authenticate(req, res, next) {
 
 export function authorizeRole(role) {
   return (req, res, next) => {
-    if (req.user?.role !== role) {
+    if (req.user?.role === role|| req.user?.role==="superAdmin") {
+      next();
+    }
+    else {
+
       return res.status(403).send({ error: "Forbidden" });
     }
-    next();
   };
 }
