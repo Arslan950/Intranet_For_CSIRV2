@@ -62,10 +62,10 @@ const Loginpage = ({ login, authenticated, setrole, setAdminName }) => {
   const HandleRegisterSecurity = (e) => {
     if (inputpin == pin) {
       handleRegister(e);
-      alert("handle register trigered");
+      toast("Correct Pin entered!! Proceeding to register.");
     } else {
       setSecurePinPopUp(false);
-      alert("Wrong pin");
+      toast("Invalid Pin, try again or contact admin.");
     }
   };
 
