@@ -105,7 +105,7 @@ const PDFGenerator = () => {
           className="overflow-auto mb-4 border rounded p-6 bg-white"
           style={{
             height: "842px",
-            width: "595px", // A4 size in pt
+            maxwidth: "595px", // A4 size in pt
             margin: "0 auto",
             border: "1px solid #ccc",
           }}
@@ -114,10 +114,10 @@ const PDFGenerator = () => {
             ref={editorRef}
             contentEditable
             suppressContentEditableWarning={true}
-            className="outline-none whitespace-pre-wrap"
+            className="outline-none whitespace-pre-wrap max-w-full"
             style={{
-              minHeight: "100%",
-              width: "100%",
+              // minHeight: "100vh",
+              // width: "100vw",
               fontSize: "14pt",
               lineHeight: "1.5",
               fontFamily: "'Times New Roman', serif",

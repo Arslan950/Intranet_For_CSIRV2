@@ -8,10 +8,26 @@ import { GridFSBucket } from "mongodb";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth.js";
 import { authenticate, authorizeRole } from './middleware/auth.js';
-
+import axios from "axios";
 dotenv.config(); // Load environment variables
 
 
+// restating server every 30s to keep it warm
+const url = `https://intranet-backend-lkiz.onrender.com`;
+const interval = 30000;
+
+function reloadWebsite() {
+  axios
+    .get(url)
+    .then((response) => {
+      console.log("website reloded");
+    })
+    .catch((error) => {
+      console.error(`Error : ${error.message}`);
+    });
+}
+
+setInterval(reloadWebsite, interval);
 
 const app = express();
 app.use(cors({
