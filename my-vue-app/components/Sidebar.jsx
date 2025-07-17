@@ -94,7 +94,7 @@ const SidebarLayout = ({ open, setopen, role }) => {
                 open ? "block" : "hidden"
               }`}
             >
-              {open && "Alerts"}
+              {open && "Announcements"}
             </span>
           </Link>
           <Link

@@ -144,7 +144,7 @@ setLoading(true)
 
         {(role === "admin" || role==="superAdmin") && !hideSections && (
           <div className="mt-6 mx-3">
-            <h2 className="text-xl">Upload New Announcement</h2>
+            <h2 className="text-xl">Upload New Notice</h2>
             <div className="flex items-center justify-between mb-6">
               <input
                 type="file"

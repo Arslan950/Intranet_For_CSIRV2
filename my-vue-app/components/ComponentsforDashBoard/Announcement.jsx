@@ -142,7 +142,7 @@ const setLoading=auth.loadingSet
 
       {(role === "admin"  || role==="superAdmin")  && !hideSections && (
         <div className="bg-gray-800 p-6 rounded-lg  shadow-lg max-w-xl  mx-4 sm:mx-auto">
-          <h2 className="text-2xl font-bold mb-4">Post New Notice</h2>
+          <h2 className="text-2xl font-bold mb-4">Post New Announcement</h2>
           <input
             value={ntext.title}
             name="title"
@@ -155,7 +155,7 @@ const setLoading=auth.loadingSet
             value={ntext.notice}
             name="notice"
             onChange={handlechange}
-            placeholder="Enter notice..."
+            placeholder="Enter Announcement..."
             rows={4}
             className="w-full mb-4 p-2 rounded bg-white text-black focus:outline-none"
           />
