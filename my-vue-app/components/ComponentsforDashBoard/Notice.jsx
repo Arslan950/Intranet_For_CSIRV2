@@ -141,7 +141,7 @@ setLoading(true)
               Open PDF
             </button> */}
           </div>
-        ))}
+        ))}</div>
 
         {(role === "admin" || role==="superAdmin") && !hideSections && (
           <div className="mt-6 mx-3">
@@ -161,7 +161,7 @@ setLoading(true)
             </div>
           </div>
         )}
-      </div></div>
+      </div>
     </div>
   );
 };
