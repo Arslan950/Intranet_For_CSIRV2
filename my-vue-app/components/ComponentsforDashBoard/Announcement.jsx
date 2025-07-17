@@ -115,7 +115,7 @@ const setLoading=auth.loadingSet
                       new
                     </span>
               </h3>{" "}
-             {  role==="admin"  && role==="superAdmin" && <button 
+             { ( role==="admin" || role==="superAdmin") && <button 
                className="bg-red-600 max-h-8 m-2 rounded-md "  onClick={()=>handleDelete(data._id)}>
                 <svg
                 

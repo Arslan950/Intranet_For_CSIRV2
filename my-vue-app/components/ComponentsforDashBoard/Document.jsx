@@ -162,7 +162,7 @@ const Document = ({ token, role, username, Classes }) => {
           </button>
         </div>
 
-        <div className="overflow-y-scroll hide-scrollbar max-h-[250px] px-2">
+        <div className={`overflow-y-scroll hide-scrollbar ${hideSections? `max-h-[250px]`:``}  px-2>`}>
   <ul className="divide-y divide-gray-400">
     {(filteredFiles ? filteredFiles : files)?.map((f, i) => (
       <li

@@ -20,7 +20,7 @@ const CyberSecurityTips = ({Classes}) => {
 
       <div className=" p-4  flex flex-col justify-between">
         {/* Tips Section */}
-        <div className="text-center mb-4">
+        <div className="text-center mb-4 overflow-y-scroll hide-scrollbar max-h-[300px]  px-2">
           <p className="text-sm text-gray-700">Tips by CyberDost</p>
           <ul className="list-disc list-inside text-left mt-4 text-sm text-black">
             {tips.map((tip, index) => (

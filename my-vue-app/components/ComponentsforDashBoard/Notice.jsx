@@ -124,7 +124,7 @@ setLoading(true)
                   </span>
                 )}
               </div>
-              {role === "admin" && !hideSections && (
+              {(role === "admin" || role==="superAdmin") && !hideSections  && (
                 <button
                   onClick={() => handleDelete(data.filename)}
                   className="text-red-500 hover:text-red-700"
@@ -134,6 +134,7 @@ setLoading(true)
                 </button>
               )}
             </div>
+        
             {/* <button
               onClick={() => handlePrev(data.filename)}
               className="text-sm text-green-600 hover:underline w-fit"
@@ -159,6 +160,7 @@ setLoading(true)
                 Upload
               </button>
             </div>
+            {/* { (role === "admin" || role==="superAdmin") && !hideSections  && <p>hi from cond</p>} */}
           </div>
         )}
       </div>
