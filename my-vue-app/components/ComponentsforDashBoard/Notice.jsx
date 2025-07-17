@@ -96,13 +96,14 @@ setLoading(true)
         <div className="bg-heading py-2 text-center border-b border-gray-400">
           <h2 className="text-lg font-bold text-Color ">Notice</h2>
         </div>
-
+        
+ <div className="overflow-y-scroll hide-scrollbar max-h-[250px]  px-2">
         {allalerts.length === 0 && (
           <p className="text-gray-400">No alerts available.</p>
         )}
 
         {allalerts.map((data, index) => (
-          <div key={data._id} className=" md:py-2   px-3 flex flex-col ">
+          <div key={data._id} className=" py-2   px-3 flex flex-col ">
             <div
               className={`${
                 !hideSections ? `flex  justify-between items-center ` : ``
@@ -160,7 +161,7 @@ setLoading(true)
             </div>
           </div>
         )}
-      </div>
+      </div></div>
     </div>
   );
 };
