@@ -31,7 +31,7 @@ setInterval(reloadWebsite, interval);
 
 const app = express();
 app.use(cors({
-  origin: ['http://192.168.31.30:85', 'https://intranet-for-csirv2.onrender.com',"https://csir-intranet.onrender.com", "http://localhost:85"] , // ✅ allow frontend dev & production
+  origin: ['http://192.168.31.30:85', 'https://intranet-for-csirv2.onrender.com',"https://csir-intranet.onrender.com", "http://localhost:85","http://192.168.1.107:90"] , // ✅ allow frontend dev & production
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true // if you're using cookies/auth headers
 }));

@@ -1,0 +1,22 @@
+(node:23508) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Error : 
+Error : read ECONNRESET
+Error : read ECONNRESET
+Error : 
+Error : getaddrinfo ENOTFOUND intranet-backend-lkiz.onrender.com
+Error : read ECONNRESET
+Error : 
+Error : getaddrinfo ENOTFOUND intranet-backend-lkiz.onrender.com
+Error : getaddrinfo ENOTFOUND intranet-backend-lkiz.onrender.com
+Error : getaddrinfo ENOTFOUND intranet-backend-lkiz.onrender.com
+Error : getaddrinfo ENOTFOUND intranet-backend-lkiz.onrender.com
+Error : getaddrinfo ENOTFOUND intranet-backend-lkiz.onrender.com
+Error : getaddrinfo ENOTFOUND intranet-backend-lkiz.onrender.com
+Error : getaddrinfo ENOTFOUND intranet-backend-lkiz.onrender.com
+Error : getaddrinfo ENOTFOUND intranet-backend-lkiz.onrender.com
+Error : getaddrinfo ENOTFOUND intranet-backend-lkiz.onrender.com
+Error : read ECONNRESET
+Error : read ECONNRESET
+Error : Request failed with status code 502
+Error : read ECONNRESET

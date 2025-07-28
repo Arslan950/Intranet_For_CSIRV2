@@ -31,13 +31,13 @@ setInterval(reloadWebsite, interval);
 
 const app = express();
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://intranet-for-csirv2.onrender.com',"https://csir-intranet.onrender.com", "http://localhost:85"], // ✅ allow frontend dev & production
+  origin: ['http://localhost:5173', 'https://intranet-for-csirv2.onrender.com',"https://csir-intranet.onrender.com", "http://localhost:85","http://192.168.1.107:90"], // ✅ allow frontend dev & production
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true // if you're using cookies/auth headers
 }));
-app.use(express.json()); // Important for reading JSON body
+app.use(express.json()); // Important for reading JSON bodk
 
-
+/ Important for reading JSON bodk
 //* important .envs
 const PORT = process.env.PORT || 3001;
 const mongoURI = process.env.MONGO_URI;
