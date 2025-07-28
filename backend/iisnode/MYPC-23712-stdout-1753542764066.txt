@@ -1,0 +1,64 @@
+[dotenv@17.0.0] injecting env (3) from .env – 🔐 encrypt with dotenvx: https://dotenvx.com
+[dotenv@17.0.0] injecting env (3) from .env – 🔐 encrypt with dotenvx: https://dotenvx.com
+[dotenv@17.0.0] injecting env (3) from .env – 🔐 encrypt with dotenvx: https://dotenvx.com
+🚀 Server running at http://localhost:\\.\pipe\b776e7c3-a7e8-4a32-9358-1b0da359ba1d
+📥 LOGIN BODY Recieved
+🔐 Password received | Type: string
+✅ MongoDB & GridFSBucket2 connected
+✅ MongoDB & GridFSBucket connected
+✅ Mongoose connected
+✅ Login successful: roshan
+Alterts sended To frontend successfully!!
+Files Fetch Successfully!!
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+Alterts sended To frontend successfully!!
+Files Fetch Successfully!!
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded

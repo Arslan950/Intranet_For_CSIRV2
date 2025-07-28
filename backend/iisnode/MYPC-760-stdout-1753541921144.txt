@@ -1,0 +1,53 @@
+[dotenv@17.0.0] injecting env (3) from .env – 🔐 encrypt with dotenvx: https://dotenvx.com
+[dotenv@17.0.0] injecting env (3) from .env – 🔐 encrypt with dotenvx: https://dotenvx.com
+[dotenv@17.0.0] injecting env (3) from .env – 🔐 encrypt with dotenvx: https://dotenvx.com
+🚀 Server running at http://localhost:\\.\pipe\3d6de301-8a80-4658-bca6-357433166287
+✅ MongoDB & GridFSBucket2 connected
+✅ Mongoose connected
+✅ MongoDB & GridFSBucket connected
+Files Fetch Successfully!!
+Alterts sended To frontend successfully!!
+Files Fetch Successfully!!
+Files Fetch Successfully!!
+Alterts sended To frontend successfully!!
+Alterts sended To frontend successfully!!
+Files Fetch Successfully!!
+Alterts sended To frontend successfully!!
+Files Fetch Successfully!!
+Alterts sended To frontend successfully!!
+Files Fetch Successfully!!
+Alterts sended To frontend successfully!!
+Files Fetch Successfully!!
+Files Fetch Successfully!!
+Alterts sended To frontend successfully!!
+Files Fetch Successfully!!
+Alterts sended To frontend successfully!!
+Alterts sended To frontend successfully!!
+Files Fetch Successfully!!
+Alterts sended To frontend successfully!!
+Files Fetch Successfully!!
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
+website reloded
