@@ -37,7 +37,7 @@ app.use(cors({
 }));
 app.use(express.json()); // Important for reading JSON bodk
 
-/ Important for reading JSON bodk
+// Important for reading JSON bodk
 //* important .envs
 const PORT = process.env.PORT || 3001;
 const mongoURI = process.env.MONGO_URI;
