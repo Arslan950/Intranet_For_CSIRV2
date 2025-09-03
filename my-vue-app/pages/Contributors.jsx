@@ -60,7 +60,7 @@ function App() {
             <div className='flex justify-center'>
               <div className='bg-white rounded-3xl flex flex-col justify-center items-center-safe p-5 w-full shadow-gray-300 shadow-lg border-t-1 border-t-gray-200'>
                 <img src="/Arslan.jpg" alt="Mohammad Arslan" className="w-32 h-37 rounded-full object-cover " />
-                <h2 className="text-2xl font-bold">Mohammad Arslan</h2>
+                <h2 className="text-2xl font-bold whitespace-nowrap">Mohammad Arslan</h2>
                 <p className="text-lg">Developer</p>
                 <p className="text-lg flex justify-center items-center gap-x-0.5">
                   <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" /></svg>
